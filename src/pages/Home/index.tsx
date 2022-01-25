@@ -1,12 +1,13 @@
 import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
-import SnackBarSevice from '~/service/snackBarSevice';
+import {Api, SnackBarService} from '~/service';
 
 import styles from './styles';
 
 const Home: React.FC = () => {
   useEffect(() => {
-    SnackBarSevice.exibe('teste', 'red');
+    SnackBarService.exibe('teste', 'red');
+    Api.get('/standingss');
   }, []);
 
   return (

@@ -1,13 +1,13 @@
 import axios from 'axios';
-import SnackBarSevice from './SnackBarSevice';
+import SnackBarService from './snackBarService';
 
-export const URL_BASE = 'https://v3.football.api-sports.io/';
+export const URL_BASE = 'https://v3.football.api-sports.ios/';
 
-const api = axios.create({
-  baseURL: 'URL_BASE',
+const Api = axios.create({
+  baseURL: URL_BASE,
 });
 
-api.interceptors.request.use(async config => {
+Api.interceptors.request.use(async config => {
   return {
     ...config,
     headers: {
@@ -20,17 +20,26 @@ api.interceptors.request.use(async config => {
   };
 });
 
-api.interceptors.response.use(
+Api.interceptors.response.use(
   response => {
+    if (response.data.errors) {
+      SnackBarService.exibe(
+        'Ocorreram erros em sua requisiçao, tente novamente mais tarde. ',
+        'red',
+      );
+      // TODO: tornar a mensagem de erro mais clara para o usuario, percorrer array de errors e exibir messages
+    }
     return response;
   },
   error => {
     if (error?.message) {
-      SnackBarSevice.exibe(error?.message, 'red');
+      SnackBarService.exibe(error?.message, 'red');
       return error;
+    } else if (error?.response?.data?.message) {
+      SnackBarService.exibe(error?.response?.data?.message, 'red');
     }
     return Promise.reject(error);
   },
 );
 
-export default api;
+export default Api;
