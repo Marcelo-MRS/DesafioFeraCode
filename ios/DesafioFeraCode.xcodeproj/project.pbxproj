@@ -11,9 +11,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		7BB86889C2E90DFBA1252DA6 /* libPods-DesafioFeraCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC784D0EB2104F199887233D /* libPods-DesafioFeraCode.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		8B45207754C8F7E69D92CA94 /* libPods-DesafioFeraCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AC197561C3B7244EA7540A8 /* libPods-DesafioFeraCode.a */; };
-		F5FB134DA38C30A33A7F0DA3 /* libPods-DesafioFeraCode-DesafioFeraCodeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2565094B5B3E8AEA822A7666 /* libPods-DesafioFeraCode-DesafioFeraCodeTests.a */; };
+		9E9604BFE2989E4DEC44D5F7 /* libPods-DesafioFeraCode-DesafioFeraCodeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3915B934F390F751EC952C38 /* libPods-DesafioFeraCode-DesafioFeraCodeTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,22 +27,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00D3364487D3D64988A79956 /* Pods-DesafioFeraCode-DesafioFeraCodeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioFeraCode-DesafioFeraCodeTests.release.xcconfig"; path = "Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests.release.xcconfig"; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* DesafioFeraCodeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesafioFeraCodeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* DesafioFeraCodeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DesafioFeraCodeTests.m; sourceTree = "<group>"; };
-		017E90BEF738939E10446221 /* Pods-DesafioFeraCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioFeraCode.release.xcconfig"; path = "Target Support Files/Pods-DesafioFeraCode/Pods-DesafioFeraCode.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* DesafioFeraCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioFeraCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = DesafioFeraCode/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = DesafioFeraCode/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DesafioFeraCode/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DesafioFeraCode/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = DesafioFeraCode/main.m; sourceTree = "<group>"; };
-		1E9CAC5B13964CF3ACC567D0 /* Pods-DesafioFeraCode-DesafioFeraCodeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioFeraCode-DesafioFeraCodeTests.debug.xcconfig"; path = "Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2565094B5B3E8AEA822A7666 /* libPods-DesafioFeraCode-DesafioFeraCodeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DesafioFeraCode-DesafioFeraCodeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5AC197561C3B7244EA7540A8 /* libPods-DesafioFeraCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DesafioFeraCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CB287AD8A77BC0362B7087F /* Pods-DesafioFeraCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioFeraCode.debug.xcconfig"; path = "Target Support Files/Pods-DesafioFeraCode/Pods-DesafioFeraCode.debug.xcconfig"; sourceTree = "<group>"; };
+		3915B934F390F751EC952C38 /* libPods-DesafioFeraCode-DesafioFeraCodeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DesafioFeraCode-DesafioFeraCodeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = DesafioFeraCode/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9195A305F5A79247F093EEC0 /* Pods-DesafioFeraCode-DesafioFeraCodeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioFeraCode-DesafioFeraCodeTests.release.xcconfig"; path = "Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests.release.xcconfig"; sourceTree = "<group>"; };
+		A6942F4FD29D969CC584466D /* Pods-DesafioFeraCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioFeraCode.release.xcconfig"; path = "Target Support Files/Pods-DesafioFeraCode/Pods-DesafioFeraCode.release.xcconfig"; sourceTree = "<group>"; };
+		C02DF215F756C0275FD4B134 /* Pods-DesafioFeraCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioFeraCode.debug.xcconfig"; path = "Target Support Files/Pods-DesafioFeraCode/Pods-DesafioFeraCode.debug.xcconfig"; sourceTree = "<group>"; };
+		EA7B63ADD50715E1CEF45083 /* Pods-DesafioFeraCode-DesafioFeraCodeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DesafioFeraCode-DesafioFeraCodeTests.debug.xcconfig"; path = "Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC784D0EB2104F199887233D /* libPods-DesafioFeraCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DesafioFeraCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5FB134DA38C30A33A7F0DA3 /* libPods-DesafioFeraCode-DesafioFeraCodeTests.a in Frameworks */,
+				9E9604BFE2989E4DEC44D5F7 /* libPods-DesafioFeraCode-DesafioFeraCodeTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B45207754C8F7E69D92CA94 /* libPods-DesafioFeraCode.a in Frameworks */,
+				7BB86889C2E90DFBA1252DA6 /* libPods-DesafioFeraCode.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,22 +100,10 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5AC197561C3B7244EA7540A8 /* libPods-DesafioFeraCode.a */,
-				2565094B5B3E8AEA822A7666 /* libPods-DesafioFeraCode-DesafioFeraCodeTests.a */,
+				EC784D0EB2104F199887233D /* libPods-DesafioFeraCode.a */,
+				3915B934F390F751EC952C38 /* libPods-DesafioFeraCode-DesafioFeraCodeTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5A0DC14E4CE4CD6044D4B834 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6CB287AD8A77BC0362B7087F /* Pods-DesafioFeraCode.debug.xcconfig */,
-				017E90BEF738939E10446221 /* Pods-DesafioFeraCode.release.xcconfig */,
-				1E9CAC5B13964CF3ACC567D0 /* Pods-DesafioFeraCode-DesafioFeraCodeTests.debug.xcconfig */,
-				9195A305F5A79247F093EEC0 /* Pods-DesafioFeraCode-DesafioFeraCodeTests.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -133,7 +121,7 @@
 				00E356EF1AD99517003FC87E /* DesafioFeraCodeTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				5A0DC14E4CE4CD6044D4B834 /* Pods */,
+				E76BB2E6C5BC33C457AE8F31 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -149,6 +137,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E76BB2E6C5BC33C457AE8F31 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C02DF215F756C0275FD4B134 /* Pods-DesafioFeraCode.debug.xcconfig */,
+				A6942F4FD29D969CC584466D /* Pods-DesafioFeraCode.release.xcconfig */,
+				EA7B63ADD50715E1CEF45083 /* Pods-DesafioFeraCode-DesafioFeraCodeTests.debug.xcconfig */,
+				00D3364487D3D64988A79956 /* Pods-DesafioFeraCode-DesafioFeraCodeTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,12 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "DesafioFeraCodeTests" */;
 			buildPhases = (
-				B5BC43006A83024068A23B16 /* [CP] Check Pods Manifest.lock */,
+				D127199621CF798C7FBA7EC1 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C198D96BF35010031F3560B6 /* [CP] Embed Pods Frameworks */,
-				C6EC40FC2B8976780FC3A476 /* [CP] Copy Pods Resources */,
+				BC9EBF97CCF77DCC163B7217 /* [CP] Embed Pods Frameworks */,
+				7F53CB52DDF3AA8934B29A27 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -177,14 +177,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "DesafioFeraCode" */;
 			buildPhases = (
-				4FF3EF1084E06196FC8527E6 /* [CP] Check Pods Manifest.lock */,
+				7747D47CDB7A0BC9EA586361 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				675D6CFCD51B4A27F1FA01F7 /* [CP] Embed Pods Frameworks */,
-				5E54342E45641A4C231083DD /* [CP] Copy Pods Resources */,
+				A4F1FE3D777B7E6848DEABA6 /* [CP] Embed Pods Frameworks */,
+				44F4D4A33F0DF019646E65BB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,7 +265,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		4FF3EF1084E06196FC8527E6 /* [CP] Check Pods Manifest.lock */ = {
+		44F4D4A33F0DF019646E65BB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode/Pods-DesafioFeraCode-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode/Pods-DesafioFeraCode-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode/Pods-DesafioFeraCode-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7747D47CDB7A0BC9EA586361 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,24 +304,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5E54342E45641A4C231083DD /* [CP] Copy Pods Resources */ = {
+		7F53CB52DDF3AA8934B29A27 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode/Pods-DesafioFeraCode-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode/Pods-DesafioFeraCode-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode/Pods-DesafioFeraCode-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		675D6CFCD51B4A27F1FA01F7 /* [CP] Embed Pods Frameworks */ = {
+		A4F1FE3D777B7E6848DEABA6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -321,7 +338,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode/Pods-DesafioFeraCode-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B5BC43006A83024068A23B16 /* [CP] Check Pods Manifest.lock */ = {
+		BC9EBF97CCF77DCC163B7217 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D127199621CF798C7FBA7EC1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -341,40 +375,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C198D96BF35010031F3560B6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C6EC40FC2B8976780FC3A476 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DesafioFeraCode-DesafioFeraCodeTests/Pods-DesafioFeraCode-DesafioFeraCodeTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -429,7 +429,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E9CAC5B13964CF3ACC567D0 /* Pods-DesafioFeraCode-DesafioFeraCodeTests.debug.xcconfig */;
+			baseConfigurationReference = EA7B63ADD50715E1CEF45083 /* Pods-DesafioFeraCode-DesafioFeraCodeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -456,7 +456,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9195A305F5A79247F093EEC0 /* Pods-DesafioFeraCode-DesafioFeraCodeTests.release.xcconfig */;
+			baseConfigurationReference = 00D3364487D3D64988A79956 /* Pods-DesafioFeraCode-DesafioFeraCodeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -480,7 +480,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CB287AD8A77BC0362B7087F /* Pods-DesafioFeraCode.debug.xcconfig */;
+			baseConfigurationReference = C02DF215F756C0275FD4B134 /* Pods-DesafioFeraCode.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -506,7 +506,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 017E90BEF738939E10446221 /* Pods-DesafioFeraCode.release.xcconfig */;
+			baseConfigurationReference = A6942F4FD29D969CC584466D /* Pods-DesafioFeraCode.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
