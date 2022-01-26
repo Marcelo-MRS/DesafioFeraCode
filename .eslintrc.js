@@ -22,4 +22,5 @@ module.exports = {
       },
     },
   },
+  'no-console': ['error', {allow: ['tron']}],
 };
