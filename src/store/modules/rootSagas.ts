@@ -1,7 +1,7 @@
 import { all, fork } from 'redux-saga/effects';
 
-import auth from './auth/sagas';
+import leagues from './leagues/sagas';
 
 export default function* rootSaga() {
-  return yield all([auth]);
+  return yield all([leagues]);
 }

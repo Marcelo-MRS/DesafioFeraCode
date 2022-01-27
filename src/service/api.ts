@@ -2,6 +2,7 @@ import axios from 'axios';
 import SnackBarService from './snackBarService';
 
 export const URL_BASE = 'https://v3.football.api-sports.io/';
+import { API_KEY } from '@env';
 
 const Api = axios.create({
   baseURL: URL_BASE,
@@ -12,9 +13,7 @@ Api.interceptors.request.use(async (config: any) => {
     ...config,
     headers: {
       ...config.headers,
-      'x-rapidapi-host': 'x-rapidapi-host',
-      'x-rapidapi-key': 'x-rapidapi-key',
-      'x-apisports-key': 'x-apisports-key',
+      'x-rapidapi-key': API_KEY,
       'Content-Type': 'application/json',
     },
   };
@@ -22,7 +21,7 @@ Api.interceptors.request.use(async (config: any) => {
 
 Api.interceptors.response.use(
   response => {
-    if (response.data.errors) {
+    if (Object.keys(response?.data?.errors).length > 0) {
       SnackBarService.exibe(
         'Ocorreram erros em sua requisiçao, tente novamente mais tarde. ',
         'red',

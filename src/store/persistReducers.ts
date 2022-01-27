@@ -7,7 +7,7 @@ export default (reducers: any) => {
       key: 'FeraCode',
       storage: AsyncStorage,
       whitelist: [
-        'auth',
+        'leagues',
       ],
     },
     reducers,
