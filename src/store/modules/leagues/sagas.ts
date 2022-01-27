@@ -11,8 +11,8 @@ interface Props {
 
 export function* getLeagues({payload}: any) {
     try {
-      const {username, password}= payload;
-      const { data: {response} }=  yield call(Api.get, '/leagues', {params: {code: 'BR'}});
+      const {id, name, code, season}= payload;
+      const { data: {response} }=  yield call(Api.get, '/leagues', {params: {id, name, code, season}});
       yield put (populateLeaguesSuccess(response))
       console.tron.log('response', response)
     } catch (error) {

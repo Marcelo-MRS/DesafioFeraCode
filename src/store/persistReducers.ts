@@ -8,6 +8,8 @@ export default (reducers: any) => {
       storage: AsyncStorage,
       whitelist: [
         'leagues',
+        'countries',
+        'seasons',
       ],
     },
     reducers,
