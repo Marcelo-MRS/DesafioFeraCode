@@ -5,6 +5,11 @@ import createStore from './createStore';
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSagas';
 import persistReducers from './persistReducers';
+import { AuthState } from './modules/auth/types';
+
+export interface ApplicationState {
+  auth: AuthState;
+}
 
 const sagaMonitor =  Reactotron.createSagaMonitor!();
 

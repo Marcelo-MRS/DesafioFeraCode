@@ -1,13 +1,13 @@
 import axios from 'axios';
 import SnackBarService from './snackBarService';
 
-export const URL_BASE = 'https://v3.football.api-sports.ios/';
+export const URL_BASE = 'https://v3.football.api-sports.io/';
 
 const Api = axios.create({
   baseURL: URL_BASE,
 });
 
-Api.interceptors.request.use(async config => {
+Api.interceptors.request.use(async (config: any) => {
   return {
     ...config,
     headers: {

@@ -1,13 +1,16 @@
 import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {Api, SnackBarService} from '~/service';
+import {loginRequest} from '~/store/modules/auth/action'
+
 
 import styles from './styles';
 
 const Home: React.FC = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    SnackBarService.exibe('teste', 'red');
-    Api.get('/standingss');
+    dispatch(loginRequest('teste', 'teste'))
   }, []);
 
   return (
