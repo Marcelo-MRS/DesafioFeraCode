@@ -5,6 +5,8 @@ import {Api, SnackBarService} from '~/service';
 import {leaguesRequest} from '~/store/modules/leagues/action'
 import {countriesRequest} from '~/store/modules/countries/action'
 import {seasonsRequest} from '~/store/modules/seasons/action'
+import {teamsRequest} from '~/store/modules/teams/action'
+import {standingsRequest} from '~/store/modules/standings/action'
 
 
 import styles from './styles';
@@ -15,6 +17,9 @@ const Home: React.FC = () => {
     dispatch(leaguesRequest())
     dispatch(countriesRequest())
     dispatch(seasonsRequest())
+    dispatch(teamsRequest(50))
+    dispatch(standingsRequest(2020, 39))
+
   }, []);
 
   return (

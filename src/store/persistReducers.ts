@@ -10,6 +10,8 @@ export default (reducers: any) => {
         'leagues',
         'countries',
         'seasons',
+        'teams',
+        'standings'
       ],
     },
     reducers,
