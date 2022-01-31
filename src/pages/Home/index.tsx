@@ -10,11 +10,10 @@ import {standingsRequest} from '~/store/modules/standings/action'
 
 
 import {userPreferencesTypedSelector} from '~/store/modules/userPreferences/reducer';
+import {leaguesTypedSelector} from '~/store/modules/leagues/reducer';
 import {updateCountryRequest} from '~/store/modules/userPreferences/action';
 import {countriesTypedSelector} from '~/store/modules/countries/reducer';
 import {openModal, closeModal} from '~/store/modules/globalModal/action';
-
-import {ListItemComponent} from '~/components';
 
 import {
   Container,
@@ -23,16 +22,20 @@ import {
   PickerImage,
   PickerIcon,
   PickerName,
+  SelectsContainer,
+  LeagueSelectContainer,
+  LeagueSelectText,
 } from './styles';
 
 import { Country } from '~/store/modules/countries/types';
-import CountrySelectComponent from './components/CountrySelectComponent';
+import {CountrySelectComponent, LeagueSelectComponent} from './components';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
 
   const {country} = userPreferencesTypedSelector(state => state.userPreferences);
   const {countries} = countriesTypedSelector(state => state.countries);
+  const {leagues} = leaguesTypedSelector(state => state.leagues);
 
   useEffect(() => {
     // dispatch(countriesRequest())
@@ -47,9 +50,19 @@ const Home: React.FC = () => {
     dispatch(closeModal());
   }
 
+  const selectLeague = () => {
+    ///
+  }
+
   const openFlagModal = () => {
     dispatch(openModal({
       content: <CountrySelectComponent countries={countries} onPress={selectCountry} />
+    }));
+  }
+
+  const openLeagueModal = () => {
+    dispatch(openModal({
+      content: <LeagueSelectComponent leagues={leagues} />
     }));
   }
 
@@ -58,12 +71,19 @@ const Home: React.FC = () => {
       <PickerContainer>
         <PickerButton onPress={openFlagModal}>
           {
-            country?.flag && <PickerImage uri={country.flag} />
+            country?.flag && <PickerImage uri={country.flag} fill="#000" />
           }
           <PickerName>{country?.name}</PickerName>
           <PickerIcon name="chevron-down" />
         </PickerButton>
       </PickerContainer>
+
+      <SelectsContainer>
+        <LeagueSelectContainer onPress={openLeagueModal}>
+          <LeagueSelectText>Liga</LeagueSelectText>
+          <PickerIcon name="chevron-down" />
+        </LeagueSelectContainer>
+      </SelectsContainer>
     </Container>
   );
 };

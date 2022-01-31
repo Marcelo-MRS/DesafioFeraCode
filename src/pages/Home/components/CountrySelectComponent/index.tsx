@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { ListItemComponent } from '~/components';
 import { Country } from '~/store/modules/countries/types';
 
-import { CountrySelectContainer, CountriesFlatList, SearchInput } from './styles';
+import { SelectContainer, FlatList, SearchInput } from './styles';
 
 interface CountrySelectProps {
     countries?: Country[];
@@ -23,14 +23,14 @@ const CountrySelectComponent: React.FC<CountrySelectProps> = ({countries, onPres
     }
 
   return (
-    <CountrySelectContainer>
-        <CountriesFlatList
+    <SelectContainer>
+        <FlatList
             data={searchObj}
             renderItem={({item, index}) => <ListItemComponent item={item} key={String(index)} onPress={onPress} />}
             ListHeaderComponent={<SearchInput onChangeText={searchCountry} placeholder='Buscar país' />}
             stickyHeaderIndices={[0]}
         />
-    </CountrySelectContainer>
+    </SelectContainer>
   );
 }
 

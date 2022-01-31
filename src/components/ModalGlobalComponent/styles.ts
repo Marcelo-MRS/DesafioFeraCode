@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
 export const Cover = styled.View`
     position: absolute;
@@ -25,3 +26,16 @@ export const ModalContent = styled.View`
     elevation: 10;
     max-height: ${`${Dimensions.get('screen').height * 0.5}px`};
 `;
+
+export const CloseButton = styled.TouchableOpacity`
+    background-color: #4D4D4D;
+    position: absolute;
+    padding: 5px;
+    border-radius: 20px;
+    top: -20px;
+    right: 10px;
+`;
+
+export const CloseIcon = styled(Icon).attrs(() => ({
+    color: '#fff'
+}))``;

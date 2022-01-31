@@ -4,10 +4,10 @@ import produce, { enableES5 } from 'immer';
 import { LeagueTypes, LeagueState } from './types';
 
 interface RootState {
-  auth: LeagueState;
+  leagues: LeagueState;
 }
 
-export const authTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const leaguesTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 const INITIAL_STATE: LeagueState ={
   leagues: [],

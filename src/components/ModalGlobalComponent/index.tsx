@@ -10,6 +10,8 @@ import {
   Modal,
   ModalContainer,
   ModalContent,
+  CloseButton,
+  CloseIcon
 } from './styles';
 
 const ModalGlobalComponent: React.FC = () => {
@@ -41,6 +43,9 @@ const ModalGlobalComponent: React.FC = () => {
         onRequestClose={onCloseModal}>
         <ModalContainer>
           <ModalContent>
+            <CloseButton onPress={onCloseModal}>
+              <CloseIcon name="x" size={20} />
+            </CloseButton>
             {content}
           </ModalContent>
         </ModalContainer>

@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { SvgUri } from 'react-native-svg';
+import { SvgCssUri } from 'react-native-svg';
 import Icon from 'react-native-vector-icons/Feather';
 
 export const Container = styled.SafeAreaView`
@@ -25,7 +25,25 @@ export const PickerName = styled.Text`
   color: #282828;
 `;
 
-export const PickerImage = styled(SvgUri).attrs(() => ({
+export const SelectsContainer = styled.View`
+  padding: 20px;
+`;
+
+export const LeagueSelectContainer = styled.TouchableOpacity`
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 0px 0px 3px #4D4D4D;
+  elevation: 4;
+`;
+
+export const LeagueSelectText = styled.Text`
+  font-size: 16px;
+`;
+
+export const PickerImage = styled(SvgCssUri).attrs(() => ({
   width: 35,
   height: 35,
 }))``;
