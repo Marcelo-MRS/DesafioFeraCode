@@ -11,7 +11,8 @@ export default (reducers: any) => {
         'countries',
         'seasons',
         'teams',
-        'standings'
+        'standings',
+        'userPreferences'
       ],
     },
     reducers,

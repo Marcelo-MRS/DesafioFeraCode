@@ -14,7 +14,6 @@ export function* getStandings({payload}: any) {
       const {season, league, team}= payload;
       const { data: {response} }=  yield call(Api.get, '/standings', {params: {season, league, team}});
       yield put (populateStandingsSuccess(response))
-      console.tron.log('response', response)
     } catch (error) {
       yield put (populateStandingsFailure())
     }

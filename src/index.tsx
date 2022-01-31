@@ -6,6 +6,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import Routes from './routes';
 import { store, persistor } from './store';
 
+import {ModalGlobalComponent} from '~/components';
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
         <NavigationContainer>
           <Routes />
         </NavigationContainer>
+        <ModalGlobalComponent />
       </PersistGate>
     </Provider>
 

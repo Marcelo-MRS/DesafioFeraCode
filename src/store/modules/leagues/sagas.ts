@@ -14,7 +14,6 @@ export function* getLeagues({payload}: any) {
       const {id, name, code, season}= payload;
       const { data: {response} }=  yield call(Api.get, '/leagues', {params: {id, name, code, season}});
       yield put (populateLeaguesSuccess(response))
-      console.tron.log('response', response)
     } catch (error) {
       yield put (populateLeaguesFailure())
     }

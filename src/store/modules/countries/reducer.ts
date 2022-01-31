@@ -3,7 +3,11 @@ import { useSelector, TypedUseSelectorHook } from 'react-redux';
 import produce, { enableES5 } from 'immer';
 import { CountryTypes, CountryState } from './types';
 
-export const authTypedSelector: TypedUseSelectorHook<CountryState> = useSelector;
+interface RootState {
+  countries: CountryState;
+}
+
+export const countriesTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 const INITIAL_STATE: CountryState ={
   countries: [],

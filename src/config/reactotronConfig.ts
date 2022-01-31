@@ -3,12 +3,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {reactotronRedux} from 'reactotron-redux';
 import sagaPlugin from 'reactotron-redux-saga';
 
-declare global {
-  interface Console {
-    tron: any;
-  }
-}
-
 // let's connect!
 const reactotron = Reactotron.configure().setAsyncStorageHandler!(AsyncStorage) // AsyncStorage would either come from `react-native` or `@react-native-community/async-storage` depending on where you get it from
   .configure() // controls connection & communication settings

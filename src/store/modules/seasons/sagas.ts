@@ -8,9 +8,7 @@ export function* getSeasons({payload}: any) {
     try {
       const { data: {response} }=  yield call(Api.get, '/leagues/seasons');
       yield put (populateSeasonsSuccess(response))
-      console.tron.log('response', response)
     } catch (error) {
-      console.tron.log('error', error)
       yield put (populateSeasonsFailure())
     }
 }

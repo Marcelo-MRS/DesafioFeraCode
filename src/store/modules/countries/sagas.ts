@@ -15,7 +15,6 @@ export function* getCountries({payload}: any) {
       const {name, code, search}= payload;
       const { data: {response} }=  yield call(Api.get, '/countries', {params: {name, code, search}});
       yield put (populateCountriesSuccess(response))
-      console.tron.log('response', response)
     } catch (error) {
       yield put (populateLeaguesFailure())
     }
