@@ -1,9 +1,8 @@
 import { takeLatest, call, put, all, select } from 'redux-saga/effects';
 import { CountryTypes, Country } from './types';
 import {Api, SnackBarService} from '~/service';
-import {populateCountriesFailure, populateCountriesSuccess} from './action'
 import { AxiosResponse } from 'axios';
-import { populateLeaguesFailure } from '../leagues/action';
+import {countriesActions, leaguesActions} from '~/store/modules'
 
 
 interface Props {
@@ -14,9 +13,9 @@ export function* getCountries({payload}: any) {
     try {
       const {name, code, search}= payload;
       const { data: {response} }=  yield call(Api.get, '/countries', {params: {name, code, search}});
-      yield put (populateCountriesSuccess(response))
+      yield put (countriesActions.populateCountriesSuccess(response))
     } catch (error) {
-      yield put (populateLeaguesFailure())
+      yield put (leaguesActions.populateLeaguesFailure())
     }
 }
 
