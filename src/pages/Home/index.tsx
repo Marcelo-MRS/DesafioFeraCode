@@ -2,8 +2,9 @@ import React, {useEffect} from 'react';
 import {Text, TouchableOpacity, ScrollView, ListRenderItemInfo} from 'react-native';
 import {useDispatch} from 'react-redux';
 
-import {leaguesRequest} from '~/store/modules/leagues/action'
-import {countriesRequest} from '~/store/modules/countries/action'
+// import {leaguesRequest} from '~/store/modules/leagues/action'
+import {countriesActions, userPreferencesActions} from '~/store/modules/'
+// import {countriesRequest} from '~/store/modules/countries/action'
 import {seasonsRequest} from '~/store/modules/seasons/action'
 import {teamsRequest} from '~/store/modules/teams/action'
 import {standingsRequest} from '~/store/modules/standings/action'
@@ -35,15 +36,14 @@ const Home: React.FC = () => {
   const {countries} = countriesTypedSelector(state => state.countries);
 
   useEffect(() => {
-    // dispatch(countriesRequest())
-    // dispatch(leaguesRequest())
+    dispatch(countriesActions.countriesRequest())
     // dispatch(seasonsRequest())
     // dispatch(teamsRequest(50))
     // dispatch(standingsRequest(2020, 39))
   }, []);
 
   const selectCountry = (newCountry: Country) => {
-    dispatch(updateCountryRequest(newCountry));
+    dispatch(userPreferencesActions.updateCountryRequest(newCountry));
     dispatch(closeModal());
   }
 

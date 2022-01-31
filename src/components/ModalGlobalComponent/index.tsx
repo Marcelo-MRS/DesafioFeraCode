@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {globalModalTypedSelector} from '~/store/modules/globalModal/reducer';
-import {closeModal} from '~/store/modules/globalModal/action';
+import {globalModalActions} from '~/store/modules'
 
 import {
   Cover,
@@ -28,7 +28,7 @@ const ModalGlobalComponent: React.FC = () => {
   }, [cover])
 
   const onCloseModal = () => {
-    dispatch(closeModal());
+    dispatch(globalModalActions.closeModal());
   };
 
   return (
