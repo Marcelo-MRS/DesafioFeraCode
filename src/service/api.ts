@@ -4,6 +4,11 @@ import SnackBarService from './snackBarService';
 export const URL_BASE = 'https://v3.football.api-sports.io/';
 import { API_KEY } from '@env';
 
+interface KeyValuePair {
+  key: string;
+  value: string;
+}
+
 const Api = axios.create({
   baseURL: URL_BASE,
 });
@@ -22,11 +27,9 @@ Api.interceptors.request.use(async (config: any) => {
 Api.interceptors.response.use(
   response => {
     if (Object.keys(response?.data?.errors).length > 0) {
-      SnackBarService.exibe(
-        'Ocorreram erros em sua requisiçao, tente novamente mais tarde. ',
-        'red',
-      );
-      // TODO: tornar a mensagem de erro mais clara para o usuario, percorrer array de errors e exibir messages
+      let values: any[] =  Object.entries(response?.data?.errors);
+      values = [...values[0]]
+      SnackBarService.exibe(values[1], 'red');      
     }
     return response;
   },
