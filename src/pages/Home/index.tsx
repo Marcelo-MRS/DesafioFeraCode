@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {countriesActions, userPreferencesActions, seasonsActions} from '~/store/modules/'
+import {countriesActions, userPreferencesActions, seasonsActions, leaguesActions} from '~/store/modules/'
 import {seasonsRequest} from '~/store/modules/seasons/action'
 import {teamsRequest} from '~/store/modules/teams/action'
 import {standingsRequest} from '~/store/modules/standings/action'
@@ -43,6 +43,9 @@ const Home: React.FC = () => {
   const inicializar = () => {
     if (countries?.length === 0) {
       dispatch(countriesActions.countriesRequest());
+    }
+    if (leagues?.length === 0) {
+      dispatch(leaguesActions.leaguesRequest({code: country.code}));
     }
     if (seasons?.length === 0) {
       dispatch(seasonsActions.seasonsRequest());
