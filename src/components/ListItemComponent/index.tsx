@@ -1,21 +1,23 @@
-import React from 'react';
+import React, {memo} from 'react';
 
 import { Container, ItemImage, ItemText } from './styles';
 
 interface ListItemProps {
-    item: any;
+    item?: any;
+    text?: string;
+    image?: string;
     onPress?: (any: any) => void
 }
 
-const ListItemComponent: React.FC<ListItemProps> = ({item, onPress}) => {
+const ListItemComponent: React.FC<ListItemProps> = ({item, text, image, onPress}) => {
   return (
       <Container onPress={() => onPress && onPress(item)}>
-          {/* {item?.flag && (
-              <ItemImage uri={item?.flag} />
+          {/* {image && (
+              <ItemImage uri={image} />
           )} */}
-          <ItemText>{item?.name}</ItemText>
+          <ItemText>{text || ''}</ItemText>
       </Container>
   );
 }
 
-export default ListItemComponent;
+export default memo(ListItemComponent);

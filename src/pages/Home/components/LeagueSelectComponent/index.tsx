@@ -7,10 +7,11 @@ import { Leagues } from '~/store/modules/leagues/types';
 import { SelectContainer, FlatList, SearchInput } from './styles';
 
 interface CountrySelectProps {
-    leagues?: Leagues[]
+    leagues?: Leagues[];
+    onPress?: (any: any) => void;
 }
 
-const LeagueSelectComponent: React.FC<CountrySelectProps> = ({leagues}) => {
+const LeagueSelectComponent: React.FC<CountrySelectProps> = ({leagues, onPress}) => {
     const [searchObj, setSearchObj] = useState<Leagues[] | undefined>([]);
 
     useEffect(() => {
@@ -26,7 +27,7 @@ const LeagueSelectComponent: React.FC<CountrySelectProps> = ({leagues}) => {
     <SelectContainer>
         <FlatList
             data={searchObj}
-            renderItem={({item, index}) => <CardItemComponent item={item} key={String(index)} />}
+            renderItem={({item, index}) => <CardItemComponent item={item} key={String(index)} onPress={onPress} />}
             ListHeaderComponent={<SearchInput placeholder='Buscar liga' onChangeText={searchLeague} />}
             stickyHeaderIndices={[0]}
             numColumns={2}

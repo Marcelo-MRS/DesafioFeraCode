@@ -1,10 +1,7 @@
-import React, {useEffect} from 'react';
-import {Text, TouchableOpacity, ScrollView, ListRenderItemInfo} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
-// import {leaguesRequest} from '~/store/modules/leagues/action'
-import {countriesActions, userPreferencesActions} from '~/store/modules/'
-// import {countriesRequest} from '~/store/modules/countries/action'
+import {countriesActions, userPreferencesActions, seasonsActions} from '~/store/modules/'
 import {seasonsRequest} from '~/store/modules/seasons/action'
 import {teamsRequest} from '~/store/modules/teams/action'
 import {standingsRequest} from '~/store/modules/standings/action'
@@ -12,8 +9,9 @@ import {standingsRequest} from '~/store/modules/standings/action'
 
 import {userPreferencesTypedSelector} from '~/store/modules/userPreferences/reducer';
 import {leaguesTypedSelector} from '~/store/modules/leagues/reducer';
-import {updateCountryRequest} from '~/store/modules/userPreferences/action';
 import {countriesTypedSelector} from '~/store/modules/countries/reducer';
+import { seasonsTypedSelector } from '~/store/modules/seasons/reducer';
+
 import {openModal, closeModal} from '~/store/modules/globalModal/action';
 
 import {
@@ -24,25 +22,35 @@ import {
   PickerIcon,
   PickerName,
   SelectsContainer,
-  LeagueSelectContainer,
-  LeagueSelectText,
 } from './styles';
 
 import { Country } from '~/store/modules/countries/types';
-import {CountrySelectComponent, LeagueSelectComponent} from './components';
+import { Leagues } from '~/store/modules/leagues/types';
+
+import {CountrySelectComponent, LeagueSelectComponent, SeasonSelectComponent} from './components';
+import { SelectComponent } from '~/components';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
+  const [selectedLeague, setSelectedLeague] = useState<Leagues | null>(null)
+  const [selectedSeason, setSelectedSeason] = useState<string>('')
 
-  const {country} = userPreferencesTypedSelector(state => state.userPreferences);
   const {countries} = countriesTypedSelector(state => state.countries);
+  const {country} = userPreferencesTypedSelector(state => state.userPreferences);
   const {leagues} = leaguesTypedSelector(state => state.leagues);
+  const {seasons} = seasonsTypedSelector(state => state.seasons);
+
+  const inicializar = () => {
+    if (countries?.length === 0) {
+      dispatch(countriesActions.countriesRequest());
+    }
+    if (seasons?.length === 0) {
+      dispatch(seasonsActions.seasonsRequest());
+    }
+  }
 
   useEffect(() => {
-    dispatch(countriesActions.countriesRequest())
-    // dispatch(seasonsRequest())
-    // dispatch(teamsRequest(50))
-    // dispatch(standingsRequest(2020, 39))
+    inicializar();
   }, []);
 
   const selectCountry = (newCountry: Country) => {
@@ -50,8 +58,14 @@ const Home: React.FC = () => {
     dispatch(closeModal());
   }
 
-  const selectLeague = () => {
-    ///
+  const selectLeague = (newLeague: Leagues) => {
+    setSelectedLeague(newLeague);
+    dispatch(closeModal());
+  }
+
+  const selectSeason = (newSeason: string) => {
+    setSelectedSeason(newSeason);
+    dispatch(closeModal());
   }
 
   const openFlagModal = () => {
@@ -62,7 +76,13 @@ const Home: React.FC = () => {
 
   const openLeagueModal = () => {
     dispatch(openModal({
-      content: <LeagueSelectComponent leagues={leagues} />
+      content: <LeagueSelectComponent leagues={leagues} onPress={selectLeague} />
+    }));
+  }
+
+  const openSeasonModal = () => {
+    dispatch(openModal({
+      content: <SeasonSelectComponent seasons={seasons} onPress={selectSeason} />
     }));
   }
 
@@ -79,10 +99,16 @@ const Home: React.FC = () => {
       </PickerContainer>
 
       <SelectsContainer>
-        <LeagueSelectContainer onPress={openLeagueModal}>
-          <LeagueSelectText>Liga</LeagueSelectText>
-          <PickerIcon name="chevron-down" />
-        </LeagueSelectContainer>
+        <SelectComponent
+          text={selectedLeague?.league?.name}
+          onPress={openLeagueModal}
+          placeholder='Selecione a liga'
+        />
+        <SelectComponent
+          text={selectedSeason}
+          onPress={openSeasonModal}
+          placeholder='Selecione a temporada'
+        />
       </SelectsContainer>
     </Container>
   );

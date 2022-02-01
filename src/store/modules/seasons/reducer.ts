@@ -7,14 +7,14 @@ interface RootState {
   seasons: SeasonState;
 }
 
-export const authTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const seasonsTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 const INITIAL_STATE: SeasonState ={
   seasons: [],
   loading: false,
 };
 
-export default function leagues(state = INITIAL_STATE, action: any) {
+export default function seasons(state = INITIAL_STATE, action: any) {
   return produce(state, draft => {
     switch (action.type) {
         case SeasonTypes.SEASON_REQUEST: {

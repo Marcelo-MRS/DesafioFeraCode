@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import {StyleSheet} from 'react-native';
-import { SvgUri } from 'react-native-svg';
+import { SvgCssUri } from 'react-native-svg';
 
 export const Container = styled.TouchableOpacity`
     flex-direction: row;
@@ -17,7 +17,7 @@ export const ItemText = styled.Text`
     font-size: 18px;
 `;
 
-export const ItemImage = styled(SvgUri).attrs(() => ({
+export const ItemImage = styled(SvgCssUri).attrs(() => ({
     width: 35,
     height: 35,
 }))`

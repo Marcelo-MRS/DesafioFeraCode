@@ -10,6 +10,11 @@ interface CountrySelectProps {
     onPress?: (country: Country) => void;
 }
 
+interface RenderItemProps {
+    item: any;
+    index: number;
+}
+
 const CountrySelectComponent: React.FC<CountrySelectProps> = ({countries, onPress}) => {
     const [searchObj, setSearchObj] = useState<Country[] | undefined>([]);
 
@@ -22,16 +27,21 @@ const CountrySelectComponent: React.FC<CountrySelectProps> = ({countries, onPres
         setSearchObj(newSearchObj);
     }
 
-  return (
-    <SelectContainer>
-        <FlatList
-            data={searchObj}
-            renderItem={({item, index}) => <ListItemComponent item={item} key={String(index)} onPress={onPress} />}
-            ListHeaderComponent={<SearchInput onChangeText={searchCountry} placeholder='Buscar país' />}
-            stickyHeaderIndices={[0]}
-        />
-    </SelectContainer>
-  );
+    const renderItem = ({item, index}: RenderItemProps) => (
+        <ListItemComponent item={item} text={item?.name} image={item?.flag} key={String(index)} onPress={onPress} />
+    )
+
+    return (
+        <SelectContainer>
+            <FlatList
+                data={searchObj}
+                renderItem={({item, index}) => renderItem({item, index})}
+                ListHeaderComponent={<SearchInput onChangeText={searchCountry} placeholder='Buscar país' />}
+                stickyHeaderIndices={[0]}
+                extraData={searchObj}
+            />
+        </SelectContainer>
+    );
 }
 
 export default CountrySelectComponent;

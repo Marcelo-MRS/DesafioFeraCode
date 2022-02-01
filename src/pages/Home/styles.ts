@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: #E5E5E5;
+  background-color: #fff;
 `;
 
 export const PickerContainer = styled.View`
@@ -27,20 +27,6 @@ export const PickerName = styled.Text`
 
 export const SelectsContainer = styled.View`
   padding: 20px;
-`;
-
-export const LeagueSelectContainer = styled.TouchableOpacity`
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #fff;
-  flex-direction: row;
-  justify-content: space-between;
-  box-shadow: 0px 0px 3px #4D4D4D;
-  elevation: 4;
-`;
-
-export const LeagueSelectText = styled.Text`
-  font-size: 16px;
 `;
 
 export const PickerImage = styled(SvgCssUri).attrs(() => ({
