@@ -19,6 +19,6 @@ export enum SeasonTypes {
  */
 
  export interface SeasonState {
-  seasons?: Array<string>;
+  seasons?: Array<number>;
   loading: boolean;
 }

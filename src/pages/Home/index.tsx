@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {countriesActions, userPreferencesActions, seasonsActions, leaguesActions, teamsActions} from '~/store/modules/'
+import {countriesActions, userPreferencesActions, seasonsActions, leaguesActions, standingsActions} from '~/store/modules/'
 
 import {userPreferencesTypedSelector} from '~/store/modules/userPreferences/reducer';
 import {leaguesTypedSelector} from '~/store/modules/leagues/reducer';
 import {countriesTypedSelector} from '~/store/modules/countries/reducer';
 import {seasonsTypedSelector} from '~/store/modules/seasons/reducer';
-import {teamsTypedSelector} from '~/store/modules/teams/reducer';
+import {standingsTypedSelector} from '~/store/modules/standings/reducer';
 
 import {openModal, closeModal} from '~/store/modules/globalModal/action';
 
@@ -30,14 +30,14 @@ import {
 const Home: React.FC = () => {
   const dispatch = useDispatch();
   const [selectedLeague, setSelectedLeague] = useState<Leagues | null>(null);
-  const [selectedSeason, setSelectedSeason] = useState<string>('');
+  const [selectedSeason, setSelectedSeason] = useState<number | undefined>(undefined);
   const [disableButton, setDisableButton] = useState<boolean>(false);
 
   const {country} = userPreferencesTypedSelector(state => state.userPreferences);
   const {countries} = countriesTypedSelector(state => state.countries);
   const {leagues} = leaguesTypedSelector(state => state.leagues);
   const {seasons} = seasonsTypedSelector(state => state.seasons);
-  const {loading: teamsLoading} = teamsTypedSelector(state => state.teams);
+  const {loading: standingLoading} = standingsTypedSelector(state => state.standings);
 
   const inicializar = () => {
     if (countries?.length === 0) {
@@ -73,7 +73,7 @@ const Home: React.FC = () => {
     dispatch(closeModal());
   }
 
-  const selectSeason = (newSeason: string) => {
+  const selectSeason = (newSeason: number) => {
     setSelectedSeason(newSeason);
     dispatch(closeModal());
   }
@@ -96,11 +96,10 @@ const Home: React.FC = () => {
     }));
   }
 
-  const onSearchTeams = () => {
-    dispatch(teamsActions.teamsRequest({
-      country: country.code,
+  const onSearchStanding = () => {
+    dispatch(standingsActions.standingsRequest({
       league: selectedLeague?.league.id,
-      season: selectedSeason
+      season: selectedSeason,
     }))
   }
 
@@ -123,15 +122,15 @@ const Home: React.FC = () => {
           placeholder='Selecione a liga'
         />
         <SelectComponent
-          text={selectedSeason}
+          text={selectedSeason ? String(selectedSeason) : ''}
           onPress={openSeasonModal}
           placeholder='Selecione a temporada'
         />
         <ButtonComponent
           text='Botão'
-          onPress={onSearchTeams}
+          onPress={onSearchStanding}
           disabled={disableButton}
-          loading={teamsLoading}
+          loading={standingLoading}
         />
       </SelectsContainer>
     </Container>

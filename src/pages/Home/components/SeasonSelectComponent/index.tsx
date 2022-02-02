@@ -5,8 +5,8 @@ import { ListItemComponent } from '~/components';
 import { SelectContainer, FlatList } from './styles';
 
 interface SeasonsSelectProps {
-    seasons?: string[];
-    onPress?: (season: string) => void;
+    seasons?: number[];
+    onPress?: (season: number) => void;
 }
 
 interface RenderItemProps {

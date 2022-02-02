@@ -4,10 +4,10 @@ import produce, { enableES5 } from 'immer';
 import { StandingsTypes, StandingsState } from './types';
 
 interface RootState {
-  auth: StandingsState;
+  standings: StandingsState;
 }
 
-export const authTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const standingsTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 const INITIAL_STATE: StandingsState ={
   standings: [],

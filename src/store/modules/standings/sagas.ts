@@ -1,10 +1,8 @@
-import { takeLatest, call, put, all, select } from 'redux-saga/effects';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { StandingsTypes, Standing } from './types';
-import {Api, SnackBarService} from '~/service';
+import {Api} from '~/service';
 import { standingsActions } from '~/store/modules'
-
-import { AxiosResponse } from 'axios';
-
+import {navigate} from '~/service/navigationService';
 
 interface Props {
   payload: Standing;
@@ -15,6 +13,7 @@ export function* getStandings({payload}: any) {
       const {season, league, team}= payload;
       const { data: {response} }=  yield call(Api.get, '/standings', {params: {season, league, team}});
       yield put (standingsActions.populateStandingsSuccess(response))
+      navigate('Standing');
     } catch (error) {
       yield put (standingsActions.populateStandingsFailure())
     }

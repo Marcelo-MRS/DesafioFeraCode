@@ -2,8 +2,15 @@ import { action } from 'typesafe-actions';
 
 import { StandingsTypes, Standings } from './types';
 
-export const standingsRequest = (season:number, league:number, team?:number) =>
-  action(StandingsTypes.STANDINGS_REQUEST, {season, league, team});
+
+interface StandingsRequestTypes {
+  season?: number;
+  league?: number;
+  team?: number
+}
+
+export const standingsRequest = (standingsRequestTypes: StandingsRequestTypes) =>
+  action(StandingsTypes.STANDINGS_REQUEST, {...standingsRequestTypes});
 
 export const populateStandingsSuccess = (source: Standings[]) =>
   action(StandingsTypes.STANDINGS_REQUEST_SUCCESS, {source});

@@ -1,10 +1,11 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {Home} from '~/pages';
+import {Home, Standing} from '~/pages';
 
 type StackParamList = {
   Home: undefined;
+  Standing: undefined;
 };
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -19,6 +20,10 @@ const Routes: React.FC = () => (
       options={{
         headerShown: false
       }}
+    />
+    <Stack.Screen
+      name="Standing"
+      component={Standing}
     />
   </Stack.Navigator>
 );

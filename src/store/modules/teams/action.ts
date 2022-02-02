@@ -6,7 +6,7 @@ interface TeamsRequestTypes {
   id?: number;
   name?: string;
   league?: number;
-  season?: string;
+  season?: number;
   country?: string;
   search?: string;
 }

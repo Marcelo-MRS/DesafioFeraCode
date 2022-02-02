@@ -66,7 +66,7 @@ export interface Away {
   update: string;
 }
 
-interface League {
+export interface League {
   id: number;
   name: string;
   country: string;
