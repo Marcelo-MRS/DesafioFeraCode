@@ -1,1 +1,1 @@
-export {default as StandingComponent} from './StandingComponent';
+export {default as LeagueHeaderComponent} from './LeagueHeaderComponent';

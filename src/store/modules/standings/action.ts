@@ -12,7 +12,7 @@ interface StandingsRequestTypes {
 export const standingsRequest = (standingsRequestTypes: StandingsRequestTypes) =>
   action(StandingsTypes.STANDINGS_REQUEST, {...standingsRequestTypes});
 
-export const populateStandingsSuccess = (source: Standings[]) =>
+export const populateStandingsSuccess = (source: Standings) =>
   action(StandingsTypes.STANDINGS_REQUEST_SUCCESS, {source});
 
 export const populateStandingsFailure = () =>

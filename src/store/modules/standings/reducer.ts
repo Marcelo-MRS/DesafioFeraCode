@@ -22,11 +22,12 @@ export default function standings(state = INITIAL_STATE, action: any) {
           break;
         }
         case StandingsTypes.STANDINGS_REQUEST_SUCCESS: {
-          draft.standings = action.payload.source;
+          draft.standings = action.payload.source.standings;
+          draft.league = action.payload.source.league;
           draft.loading = false;
           break;
         }
-        case StandingsTypes.STANDINGS_REQUEST_SUCCESS: {
+        case StandingsTypes.STANDINGS_REQUEST_FAILURE: {
           draft.standings = action.payload.source;
           draft.loading = false;
           break;

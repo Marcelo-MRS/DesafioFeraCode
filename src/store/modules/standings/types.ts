@@ -73,12 +73,12 @@ export interface League {
   logo: string;
   flag: string;
   season: number;
-  standings: Standing[];
 }
 
 
 export interface Standings {
-  league: League[];
+  league: League;
+  standings: Standing[];
 }
 
 /**
@@ -86,6 +86,7 @@ export interface Standings {
  */
 
  export interface StandingsState {
-  standings?: Standings[];
+  league?: League;
+  standings: Standing[];
   loading: boolean;
 }
