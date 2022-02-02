@@ -1,18 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {countriesActions, userPreferencesActions, seasonsActions, leaguesActions} from '~/store/modules/'
-import {seasonsRequest} from '~/store/modules/seasons/action'
-import {teamsRequest} from '~/store/modules/teams/action'
-import {standingsRequest} from '~/store/modules/standings/action'
-
+import {countriesActions, userPreferencesActions, seasonsActions, leaguesActions, teamsActions} from '~/store/modules/'
 
 import {userPreferencesTypedSelector} from '~/store/modules/userPreferences/reducer';
 import {leaguesTypedSelector} from '~/store/modules/leagues/reducer';
 import {countriesTypedSelector} from '~/store/modules/countries/reducer';
-import { seasonsTypedSelector } from '~/store/modules/seasons/reducer';
+import {seasonsTypedSelector} from '~/store/modules/seasons/reducer';
+import {teamsTypedSelector} from '~/store/modules/teams/reducer';
 
 import {openModal, closeModal} from '~/store/modules/globalModal/action';
+
+import { Country } from '~/store/modules/countries/types';
+import { Leagues } from '~/store/modules/leagues/types';
+
+import {CountrySelectComponent, LeagueSelectComponent, SeasonSelectComponent} from './components';
+import { ButtonComponent, SelectComponent } from '~/components';
 
 import {
   Container,
@@ -24,27 +27,23 @@ import {
   SelectsContainer,
 } from './styles';
 
-import { Country } from '~/store/modules/countries/types';
-import { Leagues } from '~/store/modules/leagues/types';
-
-import {CountrySelectComponent, LeagueSelectComponent, SeasonSelectComponent} from './components';
-import { SelectComponent } from '~/components';
-
 const Home: React.FC = () => {
   const dispatch = useDispatch();
-  const [selectedLeague, setSelectedLeague] = useState<Leagues | null>(null)
-  const [selectedSeason, setSelectedSeason] = useState<string>('')
+  const [selectedLeague, setSelectedLeague] = useState<Leagues | null>(null);
+  const [selectedSeason, setSelectedSeason] = useState<string>('');
+  const [disableButton, setDisableButton] = useState<boolean>(false);
 
-  const {countries} = countriesTypedSelector(state => state.countries);
   const {country} = userPreferencesTypedSelector(state => state.userPreferences);
+  const {countries} = countriesTypedSelector(state => state.countries);
   const {leagues} = leaguesTypedSelector(state => state.leagues);
   const {seasons} = seasonsTypedSelector(state => state.seasons);
+  const {loading: teamsLoading} = teamsTypedSelector(state => state.teams);
 
   const inicializar = () => {
     if (countries?.length === 0) {
       dispatch(countriesActions.countriesRequest());
     }
-    if (leagues?.length === 0) {
+    if ((leagues?.length === 0) || (leagues?.[0].country.code !== country.code)) {
       dispatch(leaguesActions.leaguesRequest({code: country.code}));
     }
     if (seasons?.length === 0) {
@@ -55,6 +54,14 @@ const Home: React.FC = () => {
   useEffect(() => {
     inicializar();
   }, []);
+
+  useEffect(() => {
+    if (selectedLeague && selectedSeason) {
+      setDisableButton(false);
+    } else {
+      setDisableButton(true);
+    }
+  }, [selectedLeague, selectedSeason]);
 
   const selectCountry = (newCountry: Country) => {
     dispatch(userPreferencesActions.updateCountryRequest(newCountry));
@@ -89,6 +96,14 @@ const Home: React.FC = () => {
     }));
   }
 
+  const onSearchTeams = () => {
+    dispatch(teamsActions.teamsRequest({
+      country: country.code,
+      league: selectedLeague?.league.id,
+      season: selectedSeason
+    }))
+  }
+
   return (
     <Container>
       <PickerContainer>
@@ -111,6 +126,12 @@ const Home: React.FC = () => {
           text={selectedSeason}
           onPress={openSeasonModal}
           placeholder='Selecione a temporada'
+        />
+        <ButtonComponent
+          text='Botão'
+          onPress={onSearchTeams}
+          disabled={disableButton}
+          loading={teamsLoading}
         />
       </SelectsContainer>
     </Container>

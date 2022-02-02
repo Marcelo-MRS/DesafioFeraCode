@@ -7,12 +7,13 @@ import Routes from './routes';
 import { store, persistor } from './store';
 
 import {ModalGlobalComponent} from '~/components';
+import { navigationRef } from './service/navigationService';
 
 const App: React.FC = () => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
           <Routes />
         </NavigationContainer>
         <ModalGlobalComponent />

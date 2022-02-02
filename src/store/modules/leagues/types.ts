@@ -14,7 +14,7 @@ export enum LeagueTypes {
  */
 
  export interface League {
-  id: Number;
+  id: number;
   name: string;
   type: string;
   logo: string;

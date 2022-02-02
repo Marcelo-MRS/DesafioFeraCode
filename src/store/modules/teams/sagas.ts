@@ -1,9 +1,7 @@
-import { takeLatest, call, put, all, select } from 'redux-saga/effects';
-import { TeamsTypes, Team, Teams } from './types';
-import {Api, SnackBarService} from '~/service';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { TeamsTypes, Team } from './types';
+import {Api} from '~/service';
 import { teamsActions } from '~/store/modules'
-import { AxiosResponse } from 'axios';
-
 
 interface Props {
   payload: Team;

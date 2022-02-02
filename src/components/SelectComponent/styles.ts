@@ -7,7 +7,7 @@ export const SelectContainer = styled.TouchableOpacity`
   background-color: #fff;
   flex-direction: row;
   justify-content: space-between;
-  box-shadow: 0px 0px 3px #4D4D4D;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
   elevation: 4;
   margin-top: 10px;
   margin-bottom: 10px;

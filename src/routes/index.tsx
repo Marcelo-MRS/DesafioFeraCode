@@ -12,13 +12,13 @@ const Stack = createNativeStackNavigator<StackParamList>();
 const Routes: React.FC = () => (
   <Stack.Navigator
     initialRouteName="Home"
-    screenOptions={{
-      headerShown: false
-    }}
   >
     <Stack.Screen
       name="Home"
       component={Home}
+      options={{
+        headerShown: false
+      }}
     />
   </Stack.Navigator>
 );

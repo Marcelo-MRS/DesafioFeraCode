@@ -10,7 +10,7 @@ interface LeagueRequestTypes {
 }
 
 export const leaguesRequest = (leagueValues?: LeagueRequestTypes) =>
-  action(LeagueTypes.LEAGUE_REQUEST, leagueValues);
+  action(LeagueTypes.LEAGUE_REQUEST, {...leagueValues});
 
 export const populateLeaguesSuccess = (source: Leagues[]) =>
   action(LeagueTypes.LEAGUE_REQUEST_SUCCESS, {source});
