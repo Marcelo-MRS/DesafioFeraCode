@@ -12,6 +12,7 @@ export const StandingContainer = styled.View`
  flex: 1;
   margin: 0px 10px;
 `;
+
 export const FlagImage = styled(SvgCssUri).attrs(() => ({
   width: 35,
   height: 35,
@@ -31,9 +32,10 @@ export const StandingColumnText = styled.Text`
   color: #282828;
   flex-shrink: 1;
 `;
-export const FlatList = styled.FlatList`
-  flex: 1;
-`;
+
+export const FlatList = styled.FlatList.attrs(() => ({
+  contentContainerStyle: { paddingBottom: 20}
+}))``;
 export const ListHeaderContainer = styled.View`
   /* flex: 1; */
   flex-direction: row;

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text } from 'react-native';
 import { LeagueHeaderComponent } from './components';
 import {standingsTypedSelector} from '~/store/modules/standings/reducer';
 import { League } from '~/store/modules/standings/types'
 
-import { Container, StandingContainer, ListItemContainer, ListHeaderContainer, StandingColumnText, PositionContainer, TeamContainer, StatisticsContainer, StatisticsColumn, TeamImage} from './styles';
+import { Container, FlatList, StandingContainer, ListItemContainer, ListHeaderContainer, StandingColumnText, PositionContainer, TeamContainer, StatisticsContainer, StatisticsColumn, TeamImage} from './styles';
 
 interface RenderItemProps {
   item: any;
@@ -91,6 +91,7 @@ const Standing: React.FC = () => {
             data={standings}
             renderItem={({item, index}) => renderItem({item, index})}
             extraData={standings}
+            contentContainerStyle={{ paddingBottom: 20 }}
           />
          
         </StandingContainer>
