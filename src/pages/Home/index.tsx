@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {countriesActions, userPreferencesActions, seasonsActions, leaguesActions} from '~/store/modules/'
-import {seasonsRequest} from '~/store/modules/seasons/action'
-import {teamsRequest} from '~/store/modules/teams/action'
-import {standingsRequest} from '~/store/modules/standings/action'
+import {countriesActions, userPreferencesActions, seasonsActions, leaguesActions, standingsActions} from '~/store/modules/'
 
 
 import {userPreferencesTypedSelector} from '~/store/modules/userPreferences/reducer';
 import {leaguesTypedSelector} from '~/store/modules/leagues/reducer';
 import {countriesTypedSelector} from '~/store/modules/countries/reducer';
 import { seasonsTypedSelector } from '~/store/modules/seasons/reducer';
+import { standingsTypedSelector } from '~/store/modules/standings/reducer';
 
 import {openModal, closeModal} from '~/store/modules/globalModal/action';
 
@@ -27,7 +25,7 @@ import {
 import { Country } from '~/store/modules/countries/types';
 import { Leagues } from '~/store/modules/leagues/types';
 
-import {CountrySelectComponent, LeagueSelectComponent, SeasonSelectComponent} from './components';
+import {CountrySelectComponent, LeagueSelectComponent, SeasonSelectComponent, StandingComponent} from './components';
 import { SelectComponent } from '~/components';
 
 const Home: React.FC = () => {
@@ -39,6 +37,7 @@ const Home: React.FC = () => {
   const {country} = userPreferencesTypedSelector(state => state.userPreferences);
   const {leagues} = leaguesTypedSelector(state => state.leagues);
   const {seasons} = seasonsTypedSelector(state => state.seasons);
+  const {standings} = standingsTypedSelector(state => state.standings);
 
   const inicializar = () => {
     if (countries?.length === 0) {
@@ -49,6 +48,9 @@ const Home: React.FC = () => {
     }
     if (seasons?.length === 0) {
       dispatch(seasonsActions.seasonsRequest());
+    }
+    if (standings?.length === 0) {
+      dispatch(standingsActions.standingsRequest(2019, 39));
     }
   }
 
@@ -113,6 +115,7 @@ const Home: React.FC = () => {
           placeholder='Selecione a temporada'
         />
       </SelectsContainer>
+      {/* <StandingComponent standings={standings}/> */}
     </Container>
   );
 };
