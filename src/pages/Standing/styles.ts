@@ -2,6 +2,10 @@ import styled from 'styled-components/native';
 import { SvgCssUri } from 'react-native-svg';
 import Icon from 'react-native-vector-icons/Feather';
 
+interface ButtonProps {
+  selected?: boolean;
+}
+
 export const Container = styled.SafeAreaView`
   flex: 1;
   background-color: #fff;
@@ -47,6 +51,25 @@ export const ListItemContainer = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   padding: 5px 0px;
+`;
+
+export const OrderButtom = styled.TouchableOpacity<ButtonProps>`
+  flex-direction: row;
+  justify-content: center;
+  background-color: ${props => props.selected ?  '#ff5757' : '#fff'};
+  /* background-color: #ff5757; */
+  align-items: center;
+  min-width: 50px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+`;
+
+export const OrderButtomText = styled.Text`
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+  flex-shrink: 1;
 `;
 export const PositionContainer = styled.View`
   flex: 1;

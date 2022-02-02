@@ -4,7 +4,9 @@ import { LeagueHeaderComponent } from './components';
 import {standingsTypedSelector} from '~/store/modules/standings/reducer';
 import { League } from '~/store/modules/standings/types'
 
-import { Container, FlatList, StandingContainer, ListItemContainer, ListHeaderContainer, StandingColumnText, PositionContainer, TeamContainer, StatisticsContainer, StatisticsColumn, TeamImage} from './styles';
+import { Container, FlatList, StandingContainer, ListItemContainer, ListHeaderContainer, 
+  StandingColumnText, PositionContainer, TeamContainer, StatisticsContainer, StatisticsColumn, 
+  TeamImage, OrderButtom, OrderButtomText} from './styles';
 
 interface RenderItemProps {
   item: any;
@@ -13,7 +15,7 @@ interface RenderItemProps {
 
 const Standing: React.FC = () => {
   const {loading: standingLoading, standings, league } = standingsTypedSelector(state => state.standings);
-
+  const [filter, setFilter] = useState<string>('all');
   useEffect(() => {
     // setLeagues(standings[].league)
     // setListStanding(standings[].league.standings)
@@ -30,16 +32,16 @@ const Standing: React.FC = () => {
       </TeamContainer>
       <StatisticsContainer>
       <StatisticsColumn>
-        <StandingColumnText>{item.all.win}</StandingColumnText>
+        <StandingColumnText>{item[filter].win}</StandingColumnText>
       </StatisticsColumn>
       <StatisticsColumn>
-        <StandingColumnText>{item.all.draw}</StandingColumnText>
+        <StandingColumnText>{item[filter].draw}</StandingColumnText>
       </StatisticsColumn>
       <StatisticsColumn>
-        <StandingColumnText>{item.all.lose}</StandingColumnText>
+        <StandingColumnText>{item[filter].lose}</StandingColumnText>
       </StatisticsColumn>
       <StatisticsColumn>
-        <StandingColumnText>{item.goalsDiff}</StandingColumnText>
+        <StandingColumnText>{item[filter].goals.for - item[filter].goals.against}</StandingColumnText>
       </StatisticsColumn>
       <StatisticsColumn>
         <StandingColumnText>{item.points}</StandingColumnText>
@@ -78,14 +80,30 @@ const Standing: React.FC = () => {
 
       </ListHeaderContainer>
     )
-    
-    
+  }
+
+  const Filter:React.FC = () => {
+    return (
+      <ListHeaderContainer>
+        <OrderButtom selected={filter==='all'} onPress={()=> setFilter('all')}>
+          <OrderButtomText>All</OrderButtomText>
+        </OrderButtom>
+        <OrderButtom selected={filter==='home'}  onPress={()=> setFilter('home')}>
+          <OrderButtomText>Home</OrderButtomText>
+        </OrderButtom>
+        <OrderButtom selected={filter==='away'}  onPress={()=> setFilter('away')}>
+          <OrderButtomText>Away</OrderButtomText>
+        </OrderButtom>
+      </ListHeaderContainer>
+    )
   }
 
   return (
     <Container>
         <LeagueHeaderComponent league={league}/>
+        
         <StandingContainer>
+          <Filter/>
           <Header/>
           <FlatList
             data={standings}
