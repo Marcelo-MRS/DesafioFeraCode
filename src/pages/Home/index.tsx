@@ -37,7 +37,7 @@ const Home: React.FC = () => {
   const {countries} = countriesTypedSelector(state => state.countries);
   const {leagues} = leaguesTypedSelector(state => state.leagues);
   const {seasons} = seasonsTypedSelector(state => state.seasons);
-  const {loading: standingLoading} = standingsTypedSelector(state => state.standings);
+  const {loading: standingLoading, standings} = standingsTypedSelector(state => state.standings);
 
   const inicializar = () => {
     if (countries?.length === 0) {
@@ -97,10 +97,11 @@ const Home: React.FC = () => {
   }
 
   const onSearchStanding = () => {
-    dispatch(standingsActions.standingsRequest({
-      league: selectedLeague?.league.id,
-      season: selectedSeason,
-    }))
+      dispatch(standingsActions.standingsRequest({
+        league: selectedLeague?.league.id,
+        season: selectedSeason,
+      }))
+    
   }
 
   return (

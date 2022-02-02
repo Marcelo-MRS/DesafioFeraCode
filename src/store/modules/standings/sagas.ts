@@ -3,6 +3,7 @@ import { StandingsTypes, Standing } from './types';
 import {Api} from '~/service';
 import { standingsActions } from '~/store/modules'
 import {navigate} from '~/service/navigationService';
+import {standingsTypedSelector} from '~/store/modules/standings/reducer';
 
 interface Props {
   payload: Standing;
@@ -11,8 +12,12 @@ interface Props {
 export function* getStandings({payload}: any) {
     try {
       const {season, league, team}= payload;
-      const { data: {response} }=  yield call(Api.get, '/standings', {params: {season, league, team}});
-      yield put (standingsActions.populateStandingsSuccess(response))
+      const {standings} = standingsTypedSelector(state => state.standings);
+      if(standings?.length ===0){
+        const { data: {response} }=  yield call(Api.get, '/standings', {params: {season, league, team}});
+        yield put (standingsActions.populateStandingsSuccess(response))
+      }
+      
       navigate('Standing');
     } catch (error) {
       yield put (standingsActions.populateStandingsFailure())
