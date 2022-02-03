@@ -22,6 +22,8 @@ import {
 import { Standing } from '~/store/modules/standings/types';
 import { useDispatch } from 'react-redux';
 import { teamsActions } from '~/store/modules';
+import { BackgroundComponent, LoadingComponent } from '~/components';
+import { teamsTypedSelector } from '~/store/modules/teams/reducer';
 interface RenderItemProps {
   item: Standing;
   index: number;
@@ -31,6 +33,7 @@ const StandingPage: React.FC = () => {
   const dispatch = useDispatch();
 
   const {standings, league } = standingsTypedSelector(state => state.standings);
+  const { loading: teamsLoading } = teamsTypedSelector(state => state.teams);
   const [filter, setFilter] = useState<string>('all');
   const [orderBy, setOrderBy] = useState<string>('points');
   const [list, setList] = useState<any>(standings);
@@ -142,22 +145,26 @@ const StandingPage: React.FC = () => {
   }
 
   return (
-    <Container>
-        <LeagueHeaderComponent league={league}/>
-        
-        <StandingContainer>
-          <Filter/>
-          <Header/>
-          <FlatList
-            data={list}
-            renderItem={({item, index}) => renderItem({item, index})}
-            extraData={list}
-            contentContainerStyle={{ paddingBottom: 20 }}
-          />
-         
-        </StandingContainer>
-
-    </Container>
+    <BackgroundComponent>
+      <Container>
+          <LeagueHeaderComponent league={league}/>
+          
+          <StandingContainer>
+            <Filter/>
+            <Header/>
+            <FlatList
+              data={list}
+              renderItem={({item, index}) => renderItem({item, index})}
+              extraData={list}
+              contentContainerStyle={{ paddingBottom: 20 }}
+            />
+          
+          </StandingContainer>
+          {
+            teamsLoading && <LoadingComponent />
+          }
+      </Container>
+    </BackgroundComponent>
   );
 }
 

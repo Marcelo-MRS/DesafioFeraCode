@@ -17,7 +17,7 @@ import { Country } from '~/store/modules/countries/types';
 import { Leagues } from '~/store/modules/leagues/types';
 
 import {CountrySelectComponent, LeagueSelectComponent, SeasonSelectComponent} from './components';
-import { BackgroundComponent, ButtonComponent, SelectComponent } from '~/components';
+import { BackgroundComponent, ButtonComponent, LoadingComponent, SelectComponent } from '~/components';
 
 import {
   Container,
@@ -158,6 +158,9 @@ const Home: React.FC = () => {
             loading={standingLoading}
           />
         </SelectsContainer>
+        {
+          standingLoading && <LoadingComponent />
+        }
       </Container>
     </BackgroundComponent>
   );

@@ -12,7 +12,7 @@ export const LeagueName = styled.Text`
     font-size: 20px;
     font-weight: bold;
     margin-left: 10px;
-    color: #282828;
+    color: ${props => props.theme.text};
 `;
 
 export const LeagueImage = styled.Image`

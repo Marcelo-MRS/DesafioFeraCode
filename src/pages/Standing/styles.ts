@@ -13,7 +13,6 @@ interface ListHeaderProps {
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: #fff;
   padding: 10px;
 `;
 
@@ -22,42 +21,31 @@ export const StandingContainer = styled.View`
   margin: 0px 10px;
 `;
 
-export const FlagImage = styled(SvgCssUri).attrs(() => ({
-  width: 35,
-  height: 35,
-}))``;
-
 export const CountryName = styled.Text`
   font-size: 15px;
   font-weight: bold;
   margin-left: 10px;
-  color: #282828;
+  color: ${props => props.theme.text};
 `;
 
 export const StandingColumnText = styled.Text`
   font-size: 15px;
   font-weight: bold;
   margin-left: 5px;
-  color: #282828;
+  color: ${props => props.theme.text};
   flex-shrink: 1;
 `;
 
 
 export const StandingColumnButtom = styled.TouchableOpacity<ButtonProps>`
-  background-color: ${props => props.selected ?  '#ff5757' : '#fff'};
+  background-color: ${props => props.selected ?  props.theme.active : 'transparent'};
   flex: 1;
   flex-direction: row;
   justify-content: center;
   border-radius: 3px;
 `;
 
-
-export const FlatList = styled.FlatList.attrs(() => ({
-  contentContainerStyle: { paddingBottom: 20}
-}))``;
-
 export const ListHeaderContainer = styled.View<ListHeaderProps>`
-  /* flex: 1; */
   flex-direction: row;
   align-items: center;
   padding: 5px 0px;
@@ -65,7 +53,6 @@ export const ListHeaderContainer = styled.View<ListHeaderProps>`
   border-bottom-color: lightgray;
 `;
 export const ListItemContainer = styled.TouchableOpacity`
-  /* flex: 1; */
   flex-direction: row;
   align-items: center;
   padding: 5px 0px;
@@ -74,8 +61,7 @@ export const ListItemContainer = styled.TouchableOpacity`
 export const OrderButtom = styled.TouchableOpacity<ButtonProps>`
   flex-direction: row;
   justify-content: center;
-  background-color: ${props => props.selected ?  '#ff5757' : '#fff'};
-  /* background-color: #ff5757; */
+  background-color: ${props => props.selected ?  props.theme.active : 'transparent'};
   align-items: center;
   min-width: 50px;
   padding: 5px 10px;
@@ -86,7 +72,7 @@ export const OrderButtom = styled.TouchableOpacity<ButtonProps>`
 export const OrderButtomText = styled.Text`
   font-size: 15px;
   font-weight: bold;
-  color: #000;
+  color: ${props => props.theme.text};
   flex-shrink: 1;
 `;
 export const PositionContainer = styled.View`
@@ -116,3 +102,12 @@ export const StatisticsColumn = styled.View`
   align-items: center;
   justify-content: center;
 `;
+
+export const FlagImage = styled(SvgCssUri).attrs(() => ({
+  width: 35,
+  height: 35,
+}))``;
+
+export const FlatList = styled.FlatList.attrs(() => ({
+  contentContainerStyle: { paddingBottom: 20}
+}))``;

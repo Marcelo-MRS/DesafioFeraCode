@@ -5,3 +5,5 @@ export {default as SelectComponent} from './SelectComponent';
 export {default as ButtonComponent} from './ButtonComponent';
 export {default as SearchInputComponent} from './SearchInputComponent';
 export {default as BackgroundComponent} from './BackgroundComponent';
+export {default as HeaderButtonComponent} from './HeaderButtonComponent';
+export {default as LoadingComponent} from './LoadingComponent';

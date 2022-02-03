@@ -6,7 +6,8 @@ const light: Theme = {
     secundary: '#ffffff',
     tertiary: '#f0f0f0',
     highlight: '#d3d3d3',
-    text: '#282828'
+    text: '#282828',
+    active: '#ff5757',
 };
 
 export default light;

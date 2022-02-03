@@ -12,4 +12,5 @@ export interface Theme {
   tertiary: string,
   highlight: string,
   text: string,
+  active: string,
 }

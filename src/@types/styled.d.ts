@@ -8,5 +8,6 @@ declare module 'styled-components' {
     tertiary: string,
     highlight: string,
     text: string,
+    active: string,
   }
 }

@@ -5,13 +5,8 @@ interface StadiumImageProps {
     size: number;
 }
 
-export const Container = styled.ScrollView.attrs(() => ({
-    contentContainerStyle: {
-        paddingBottom: 60
-    }
-}))`
+export const Container = styled.SafeAreaView`
     flex: 1;
-    background-color: #fff;
 `;
 
 export const HeaderContainer = styled.View`
@@ -27,14 +22,14 @@ export const TeamImage = styled.Image`
 `;
 
 export const TeamName = styled.Text`
-    color: #282828;
+    color: ${props=> props.theme.text};
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 5px;
 `;
 
 export const TeamDetail = styled.Text`
-    color: ${rgba('#282828', 0.6)};
+    color: ${props => rgba(props.theme.text, 0.6)};
     font-size: 15px;
     margin-bottom: 5px;
 `;
@@ -44,18 +39,16 @@ export const DetailContainer = styled.View`
 `;
 
 export const Title = styled.Text`
-    color: #282828;
+    color: ${props=> props.theme.text};
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 20px;
 `;
 
 export const Card = styled.View`
-    background-color: #fff;
+    background-color: ${props=> props.theme.tertiary};
     border-radius: 10px;
     padding: 10px;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
-    elevation: 3;
     `;
 
 export const StadiumImage = styled.Image<StadiumImageProps>`
@@ -65,7 +58,7 @@ export const StadiumImage = styled.Image<StadiumImageProps>`
 `;
     
 export const SubTitle = styled.Text`
-    color: #282828;
+    color: ${props=> props.theme.text};
     font-size: 18px;
     font-weight: bold;
     text-align: center;
@@ -76,14 +69,22 @@ export const StadiumDetailContainer = styled.View`
 `;
     
 export const DescriptionLabel = styled.Text`
-    color: #282828;
+    color: ${props=> props.theme.text};
     font-size: 15px;
     font-weight: bold;
     margin-bottom: 5px;
 `;
     
 export const DescriptionText = styled.Text`
-    color: ${rgba('#282828', 0.6)};
+    color: ${props => rgba(props.theme.text, 0.6)};
     font-size: 15px;
     margin-bottom: 10px;
+`;
+
+export const ScrollContainer = styled.ScrollView.attrs(() => ({
+    contentContainerStyle: {
+        paddingBottom: 60
+    }
+}))`
+    flex: 1;
 `;
