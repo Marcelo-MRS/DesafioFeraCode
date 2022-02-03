@@ -17,7 +17,6 @@ const App: React.FC = () => {
   const [theme, setTheme] = usePersistState<DefaultTheme>('theme', dark);
 
   const toggle = useCallback(() => {
-    console.tron.log('Entrou toogle', theme)
     setTheme(theme.title === 'light' ? dark : light);
   }, [setTheme, theme]);
 
