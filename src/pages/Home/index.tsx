@@ -3,7 +3,7 @@ import { Platform, Switch } from 'react-native';
 
 import {useDispatch} from 'react-redux';
 
-import {countriesActions, userPreferencesActions, seasonsActions, leaguesActions, standingsActions} from '~/store/modules/'
+import {countriesActions, userPreferencesActions, seasonsActions, leaguesActions, standingsActions, teamsActions} from '~/store/modules/'
 
 import {userPreferencesTypedSelector} from '~/store/modules/userPreferences/reducer';
 import {leaguesTypedSelector} from '~/store/modules/leagues/reducer';
@@ -18,6 +18,7 @@ import { Leagues } from '~/store/modules/leagues/types';
 
 import {CountrySelectComponent, LeagueSelectComponent, SeasonSelectComponent} from './components';
 import { BackgroundComponent, ButtonComponent, SelectComponent } from '~/components';
+import { navigate } from '~/service/navigationService';
 
 import {
   Container,
@@ -28,6 +29,10 @@ import {
   PickerName,
   SelectsContainer,
   SwitchContainer,
+  LastSearchesButton,
+  LastSearchesText,
+  LastSearchesContainer,
+  LastSearchesTittleText
 } from './styles';
 
 import { ThemeToggleContext } from '~/styles/themes';
@@ -42,7 +47,7 @@ const Home: React.FC = () => {
   const [selectedSeason, setSelectedSeason] = useState<number | undefined>(undefined);
   const [disableButton, setDisableButton] = useState<boolean>(false);
 
-  const {country} = userPreferencesTypedSelector(state => state.userPreferences);
+  const {country, offLineAccess} = userPreferencesTypedSelector(state => state.userPreferences);
   const {countries} = countriesTypedSelector(state => state.countries);
   const {leagues} = leaguesTypedSelector(state => state.leagues);
   const {seasons} = seasonsTypedSelector(state => state.seasons);
@@ -114,6 +119,20 @@ const Home: React.FC = () => {
       }))
     
   }
+
+  const onOfflineStandingSearch = () => {
+    if(offLineAccess?.league && offLineAccess?.standings){
+      dispatch(standingsActions.populateStandingsSuccess({league: offLineAccess?.league, standings: offLineAccess?.standings }))
+      navigate('Standing');
+    }
+  }
+
+  const onOfflineTeamSearch = () => {
+    if(offLineAccess?.teams){
+      dispatch(teamsActions.populateTeamsSuccess(offLineAccess?.teams ))
+      navigate('Detail');
+    }
+  }
   
   return (
     <BackgroundComponent>
@@ -158,6 +177,31 @@ const Home: React.FC = () => {
             loading={standingLoading}
           />
         </SelectsContainer>
+        {
+          offLineAccess &&
+                  <LastSearchesContainer>
+                    <LastSearchesTittleText>Última classificação pesquisada</LastSearchesTittleText>
+                    {
+                      offLineAccess?.standings && offLineAccess?.league &&
+                      <LastSearchesButton onPress={onOfflineStandingSearch}>
+                        <LastSearchesText>
+                          {offLineAccess?.league?.name} {offLineAccess?.league?.season}{' '}
+                          - {offLineAccess?.league?.season-2000 + 1}
+                        </LastSearchesText>
+                      </LastSearchesButton>
+                    }
+                    <LastSearchesTittleText>Último time acessado</LastSearchesTittleText>
+                    {
+                      offLineAccess?.teams &&
+                      <LastSearchesButton onPress={onOfflineTeamSearch}>
+                        <LastSearchesText>{offLineAccess?.teams[0]?.team?.name}</LastSearchesText>
+                      </LastSearchesButton>
+                      
+                    }
+                  </LastSearchesContainer>
+        }
+
+
       </Container>
     </BackgroundComponent>
   );
