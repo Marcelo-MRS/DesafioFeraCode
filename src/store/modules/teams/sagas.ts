@@ -12,14 +12,9 @@ export function* getTeams({payload}: any) {
     try {
       const {id, name, league, season, country, search}= payload;
       const {teams} = yield select(state => state.teams);
-      if(teams.length === 0){
-        const { data: {response} }=  yield call(Api.get, '/teams', {params: {id, name, league, season, country, search}});
-        yield put (teamsActions.populateTeamsSuccess(response))
-        yield put (userPreferencesActions.updateOfflineAccess('teams', response))
-      } else {
-        yield put (teamsActions.populateTeamsSuccess(teams))
-        yield put (userPreferencesActions.updateOfflineAccess('teams', teams))
-      }
+      const { data: {response} }=  yield call(Api.get, '/teams', {params: {id, name, league, season, country, search}});
+      yield put (teamsActions.populateTeamsSuccess(response))
+      yield put (userPreferencesActions.updateOfflineAccess('teams', response))
       navigate('Detail')
     } catch (error) {
       yield put (teamsActions.populateTeamsFailure())
