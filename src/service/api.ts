@@ -35,7 +35,11 @@ Api.interceptors.response.use(
   },
   error => {
     if (error?.message) {
-      SnackBarService.exibe(error?.message, 'red');
+      if(error?.message.includes('Network')) {
+        SnackBarService.exibe('Você está desconectado, entretanto pode acessar suas últimas consultas.', 'red');
+      } else {
+        SnackBarService.exibe(error?.message, 'red');
+      }
       return error;
     } else if (error?.response?.data?.message) {
       SnackBarService.exibe(error?.response?.data?.message, 'red');
