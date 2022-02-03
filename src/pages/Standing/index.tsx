@@ -68,7 +68,7 @@ const Standing: React.FC = () => {
   )
   const Header:React.FC = () => {
     return (
-      <ListHeaderContainer>
+      <ListHeaderContainer borderBottom>
         <PositionContainer>
           <StandingColumnText>#</StandingColumnText>
         </PositionContainer>
@@ -102,7 +102,6 @@ const Standing: React.FC = () => {
             </StandingColumnButtom>
           </StatisticsColumn>
         </StatisticsContainer>
-
       </ListHeaderContainer>
     )
   }

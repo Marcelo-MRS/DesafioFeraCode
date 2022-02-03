@@ -1,10 +1,15 @@
 import styled from 'styled-components/native';
 import { SvgCssUri } from 'react-native-svg';
-import Icon from 'react-native-vector-icons/Feather';
+import {StyleSheet} from 'react-native';
 
 interface ButtonProps {
   selected?: boolean;
 }
+
+interface ListHeaderProps {
+  borderBottom?: boolean;
+}
+
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -50,11 +55,14 @@ export const StandingColumnButtom = styled.TouchableOpacity<ButtonProps>`
 export const FlatList = styled.FlatList.attrs(() => ({
   contentContainerStyle: { paddingBottom: 20}
 }))``;
-export const ListHeaderContainer = styled.View`
+
+export const ListHeaderContainer = styled.View<ListHeaderProps>`
   /* flex: 1; */
   flex-direction: row;
   align-items: center;
   padding: 5px 0px;
+  border-bottom-width: ${props => props.borderBottom ? `${StyleSheet.hairlineWidth}px`: '0px'};
+  border-bottom-color: lightgray;
 `;
 export const ListItemContainer = styled.TouchableOpacity`
   /* flex: 1; */
