@@ -8,7 +8,7 @@ export const Cover = styled.View`
     bottom: 0px;
     right: 0px;
     left: 0px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
 `;
 
 export const Modal = styled.Modal``;
@@ -19,23 +19,29 @@ export const ModalContainer = styled.View`
     top: 20%;
 `;
 
-export const ModalContent = styled.View`
+export const ModalContent = styled.View.attrs(() => ({
+    styles: {elevation: 3}
+}))`
     padding: 20px;
-    background-color: #FFFFFF;
+    background-color: ${props => props.theme.secundary};
     border-radius: 10px;
     elevation: 10;
     max-height: ${`${Dimensions.get('screen').height * 0.5}px`};
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
 `;
 
-export const CloseButton = styled.TouchableOpacity`
-    background-color: #4D4D4D;
+export const CloseButton = styled.TouchableOpacity.attrs(() => ({
+    styles: {elevation: 3}
+}))`
+    background-color: ${props => props.theme.highlight};
     position: absolute;
     padding: 5px;
     border-radius: 20px;
     top: -20px;
     right: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
 `;
 
-export const CloseIcon = styled(Icon).attrs(() => ({
-    color: '#fff'
+export const CloseIcon = styled(Icon).attrs((props) => ({
+    color: props.theme.text
 }))``;

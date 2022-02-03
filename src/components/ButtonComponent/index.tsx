@@ -16,8 +16,8 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
     onPress,
     disabled = false,
     loading = false,
-    btnColor = '#fff',
-    txtColor = '#282828'
+    btnColor,
+    txtColor
 }) => {
     const buttonAction = () => {
         ((!disabled && !loading) && onPress) && onPress();

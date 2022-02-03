@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import { ListItemComponent } from '~/components';
+import { ListItemComponent, SearchInputComponent } from '~/components';
 import { Country } from '~/store/modules/countries/types';
+import { NotFoundComponent } from '../';
 
-import { SelectContainer, FlatList, SearchInput } from './styles';
+import { SelectContainer, FlatList } from './styles';
 
 interface CountrySelectProps {
     countries?: Country[];
@@ -36,9 +37,16 @@ const CountrySelectComponent: React.FC<CountrySelectProps> = ({countries, onPres
             <FlatList
                 data={searchObj}
                 renderItem={({item, index}) => renderItem({item, index})}
-                ListHeaderComponent={<SearchInput onChangeText={searchCountry} placeholder='Buscar país' />}
-                stickyHeaderIndices={[0]}
                 extraData={searchObj}
+                stickyHeaderIndices={[0]}
+                ListHeaderComponent={<SearchInputComponent onChangeText={searchCountry} placeholder='Buscar país' />}
+                ListFooterComponent={() => (
+                    <>
+                        {
+                            (searchObj && searchObj.length === 0) && <NotFoundComponent text='Nenhum país encontrado' />
+                        }
+                    </>
+                )}
             />
         </SelectContainer>
     );

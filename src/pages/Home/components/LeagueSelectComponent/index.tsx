@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
-import { CardItemComponent } from '~/components';
+import { CardItemComponent, SearchInputComponent } from '~/components';
 
 import { Leagues } from '~/store/modules/leagues/types';
+import {NotFoundComponent} from '../';
 
-import { SelectContainer, FlatList, SearchInput } from './styles';
+import { SelectContainer, FlatList } from './styles';
 
 interface CountrySelectProps {
     leagues?: Leagues[];
@@ -28,9 +28,16 @@ const LeagueSelectComponent: React.FC<CountrySelectProps> = ({leagues, onPress})
         <FlatList
             data={searchObj}
             renderItem={({item, index}) => <CardItemComponent item={item} key={String(index)} onPress={onPress} />}
-            ListHeaderComponent={<SearchInput placeholder='Buscar liga' onChangeText={searchLeague} />}
-            stickyHeaderIndices={[0]}
             numColumns={2}
+            ListHeaderComponent={<SearchInputComponent onChangeText={searchLeague} placeholder='Buscar liga' />}
+            stickyHeaderIndices={[0]}
+            ListFooterComponent={() => (
+                <>
+                    {
+                        (searchObj && searchObj.length === 0) && <NotFoundComponent text='Nenhuma liga encontrada' />
+                    }
+                </>
+            )}
         />
     </SelectContainer>
   );

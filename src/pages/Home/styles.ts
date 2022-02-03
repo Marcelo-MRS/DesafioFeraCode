@@ -4,15 +4,21 @@ import Icon from 'react-native-vector-icons/Feather';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: #fff;
+`;
+
+export const SwitchContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const PickerContainer = styled.View`
-  align-items: flex-end;
+  padding: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const PickerButton = styled.TouchableOpacity`
-  padding: 10px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -22,7 +28,7 @@ export const PickerName = styled.Text`
   font-size: 15px;
   font-weight: bold;
   margin-left: 10px;
-  color: #282828;
+  color: ${props => props.theme.text};
 `;
 
 export const SelectsContainer = styled.View`
@@ -34,9 +40,9 @@ export const PickerImage = styled(SvgCssUri).attrs(() => ({
   height: 35,
 }))``;
 
-export const PickerIcon = styled(Icon).attrs(() => ({
+export const PickerIcon = styled(Icon).attrs((props) => ({
   size: 18,
-  color: '#282828'
+  color: props.theme.text
 }))`
   margin-left: 5px;
 `;

@@ -1,4 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+import { Platform, Switch } from 'react-native';
+
 import {useDispatch} from 'react-redux';
 
 import {countriesActions, userPreferencesActions, seasonsActions, leaguesActions, standingsActions} from '~/store/modules/'
@@ -15,7 +17,7 @@ import { Country } from '~/store/modules/countries/types';
 import { Leagues } from '~/store/modules/leagues/types';
 
 import {CountrySelectComponent, LeagueSelectComponent, SeasonSelectComponent} from './components';
-import { ButtonComponent, SelectComponent } from '~/components';
+import { BackgroundComponent, ButtonComponent, SelectComponent } from '~/components';
 
 import {
   Container,
@@ -25,10 +27,17 @@ import {
   PickerIcon,
   PickerName,
   SelectsContainer,
+  SwitchContainer,
 } from './styles';
+
+import { ThemeToggleContext } from '~/styles/themes';
+import { ThemeContext } from 'styled-components';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
+  const {toggleTheme} = useContext(ThemeToggleContext);
+  const {title, highlight} = useContext(ThemeContext);
+
   const [selectedLeague, setSelectedLeague] = useState<Leagues | null>(null);
   const [selectedSeason, setSelectedSeason] = useState<number | undefined>(undefined);
   const [disableButton, setDisableButton] = useState<boolean>(false);
@@ -65,6 +74,8 @@ const Home: React.FC = () => {
 
   const selectCountry = (newCountry: Country) => {
     dispatch(userPreferencesActions.updateCountryRequest(newCountry));
+    setSelectedLeague(null)
+    setSelectedSeason(undefined)
     dispatch(closeModal());
   }
 
@@ -103,38 +114,52 @@ const Home: React.FC = () => {
       }))
     
   }
-
+  
   return (
-    <Container>
-      <PickerContainer>
-        <PickerButton onPress={openFlagModal}>
-          {
-            country?.flag && <PickerImage uri={country.flag} fill="#000" />
-          }
-          <PickerName>{country?.name}</PickerName>
-          <PickerIcon name="chevron-down" />
-        </PickerButton>
-      </PickerContainer>
+    <BackgroundComponent>
+      <Container>
+        <PickerContainer>
+          <SwitchContainer>
+            <Switch
+              value={title === 'dark'}
+              onValueChange={toggleTheme}
+              trackColor={{
+                true: highlight,
+                false: Platform.OS === 'android' ? '#d3d3d3' : '#fbfbfb',
+              }}
+              thumbColor="#FFFFFF"
+            />
+            <PickerIcon name={title === 'dark' ? 'moon' : 'sun'} />
+          </SwitchContainer>
+          <PickerButton onPress={openFlagModal}>
+            {
+              country?.flag && <PickerImage uri={country.flag} fill="#000" />
+            }
+            <PickerName>{country?.name}</PickerName>
+            <PickerIcon name="chevron-down" />
+          </PickerButton>
+        </PickerContainer>
 
-      <SelectsContainer>
-        <SelectComponent
-          text={selectedLeague?.league?.name}
-          onPress={openLeagueModal}
-          placeholder='Selecione a liga'
-        />
-        <SelectComponent
-          text={selectedSeason ? String(selectedSeason) : ''}
-          onPress={openSeasonModal}
-          placeholder='Selecione a temporada'
-        />
-        <ButtonComponent
-          text='Botão'
-          onPress={onSearchStanding}
-          disabled={disableButton}
-          loading={standingLoading}
-        />
-      </SelectsContainer>
-    </Container>
+        <SelectsContainer>
+          <SelectComponent
+            text={selectedLeague?.league?.name}
+            onPress={openLeagueModal}
+            placeholder='Selecione a liga'
+          />
+          <SelectComponent
+            text={selectedSeason ? String(selectedSeason) : ''}
+            onPress={openSeasonModal}
+            placeholder='Selecione a temporada'
+          />
+          <ButtonComponent
+            text='Buscar classificação'
+            onPress={onSearchStanding}
+            disabled={disableButton}
+            loading={standingLoading}
+          />
+        </SelectsContainer>
+      </Container>
+    </BackgroundComponent>
   );
 };
 

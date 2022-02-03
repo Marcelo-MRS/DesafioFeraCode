@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import {StyleSheet} from 'react-native';
 import { SvgCssUri } from 'react-native-svg';
+import {rgba} from 'polished';
 
 export const Container = styled.TouchableOpacity`
     flex-direction: row;
@@ -9,11 +10,11 @@ export const Container = styled.TouchableOpacity`
     padding-bottom: 10px;
     margin-bottom: 5px;
     border-bottom-width: ${`${StyleSheet.hairlineWidth}px`};
-    border-bottom-color: #282828;
+    border-bottom-color: ${props => rgba(props.theme.text, 0.5)};
 `;
 
 export const ItemText = styled.Text`
-    color: #282828;
+    color: ${props => props.theme.text};
     font-size: 18px;
 `;
 
