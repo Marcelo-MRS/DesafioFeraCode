@@ -37,6 +37,16 @@ export const StandingColumnText = styled.Text`
   flex-shrink: 1;
 `;
 
+
+export const StandingColumnButtom = styled.TouchableOpacity<ButtonProps>`
+  background-color: ${props => props.selected ?  '#ff5757' : '#fff'};
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 3px;
+`;
+
+
 export const FlatList = styled.FlatList.attrs(() => ({
   contentContainerStyle: { paddingBottom: 20}
 }))``;

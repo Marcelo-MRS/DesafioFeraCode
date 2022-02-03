@@ -6,7 +6,7 @@ import { League } from '~/store/modules/standings/types'
 
 import { Container, FlatList, StandingContainer, ListItemContainer, ListHeaderContainer, 
   StandingColumnText, PositionContainer, TeamContainer, StatisticsContainer, StatisticsColumn, 
-  TeamImage, OrderButtom, OrderButtomText} from './styles';
+  TeamImage, OrderButtom, OrderButtomText, StandingColumnButtom} from './styles';
 
 interface RenderItemProps {
   item: any;
@@ -16,10 +16,25 @@ interface RenderItemProps {
 const Standing: React.FC = () => {
   const {loading: standingLoading, standings, league } = standingsTypedSelector(state => state.standings);
   const [filter, setFilter] = useState<string>('all');
+  const [orderBy, setOrderBy] = useState<string>('points');
+  const [list, setList] = useState<any>(standings);
   useEffect(() => {
-    // setLeagues(standings[].league)
-    // setListStanding(standings[].league.standings)
-  }, []);
+    let tempStandings = [...standings];
+    if(orderBy === 'points'){
+      tempStandings.sort((a, b) => (a.points < b.points) ? 1 : -1)
+     } else if (orderBy === 'goalsDiff'){
+      tempStandings.sort((a:any, b:any) => (
+        (a[filter].goals.for - a[filter].goals.against) < (b[filter].goals.for - b[filter].goals.against)
+        ) ? 1 : -1);
+     } else {
+      tempStandings.sort((a:any, b:any) => (a[filter][orderBy] < b[filter][orderBy]) ? 1 : -1)
+    }
+    setList(tempStandings)
+  }, [orderBy]);
+
+  useEffect(() => {
+    setOrderBy('points')
+  }, [filter]);
 
   const renderItem = ({item, index}: RenderItemProps) => (
     <ListItemContainer>
@@ -62,19 +77,29 @@ const Standing: React.FC = () => {
         </TeamContainer>
         <StatisticsContainer>
           <StatisticsColumn>
-            <StandingColumnText>W</StandingColumnText>
+            <StandingColumnButtom selected={orderBy==='win'} onPress={()=> setOrderBy('win')}>
+              <StandingColumnText>W</StandingColumnText>
+            </StandingColumnButtom>
           </StatisticsColumn>
           <StatisticsColumn>
-            <StandingColumnText>D</StandingColumnText>
+            <StandingColumnButtom selected={orderBy==='draw'} onPress={()=> setOrderBy('draw')}>
+              <StandingColumnText>D</StandingColumnText>
+            </StandingColumnButtom>
           </StatisticsColumn>
           <StatisticsColumn>
-            <StandingColumnText>L</StandingColumnText>
+            <StandingColumnButtom selected={orderBy==='lose'} onPress={()=> setOrderBy('lose')}>
+              <StandingColumnText>L</StandingColumnText>
+            </StandingColumnButtom>
           </StatisticsColumn>
           <StatisticsColumn>
-            <StandingColumnText>GD</StandingColumnText>
+            <StandingColumnButtom selected={orderBy==='goalsDiff'} onPress={()=> setOrderBy('goalsDiff')}>
+              <StandingColumnText>GD</StandingColumnText>
+            </StandingColumnButtom>
           </StatisticsColumn>
           <StatisticsColumn>
-            <StandingColumnText>PTS</StandingColumnText>
+            <StandingColumnButtom selected={orderBy==='points'} onPress={()=> setOrderBy('points')}>
+              <StandingColumnText>PTS</StandingColumnText>
+            </StandingColumnButtom>
           </StatisticsColumn>
         </StatisticsContainer>
 
@@ -106,9 +131,9 @@ const Standing: React.FC = () => {
           <Filter/>
           <Header/>
           <FlatList
-            data={standings}
+            data={list}
             renderItem={({item, index}) => renderItem({item, index})}
-            extraData={standings}
+            extraData={list}
             contentContainerStyle={{ paddingBottom: 20 }}
           />
          
