@@ -16,7 +16,8 @@ const INITIAL_STATE: UserPreferencesState = {
     code: DEFAULT_COUNTRY_CODE,
     name: DEFAULT_COUNTRY_NAME,
     flag: DEFAULT_COUNTRY_FLAG,
-  }
+  },
+  offLineAccess: undefined,
 };
 
 export default function userPreferences(state = INITIAL_STATE, action: any) {
@@ -25,6 +26,10 @@ export default function userPreferences(state = INITIAL_STATE, action: any) {
         case UserPreferencesTypes.UPDATE_COUNTRY_REQUEST: {
             draft.country = action.payload.country;
             break;
+        }
+        case UserPreferencesTypes.UPDATE_OFFLINE_ACCESS: {
+          draft.offLineAccess = {...draft.offLineAccess,  [action.payload.target]: action.payload.source};
+          break;
         }
       default:
         break;

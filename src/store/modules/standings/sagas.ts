@@ -1,7 +1,7 @@
 import { takeLatest, call, put, all, select } from 'redux-saga/effects';
 import { StandingsTypes, Standing } from './types';
 import {Api} from '~/service';
-import { standingsActions } from '~/store/modules'
+import { standingsActions, userPreferencesActions } from '~/store/modules'
 import {navigate} from '~/service/navigationService';
 import {standingsTypedSelector} from '~/store/modules/standings/reducer';
 
@@ -21,8 +21,13 @@ export function* getStandings({payload}: any) {
         delete newLeague.standings;
         console.tron.log({league: newLeague, standings: newStandings });
         yield put (standingsActions.populateStandingsSuccess({league: newLeague, standings: newStandings }))
+        yield put (userPreferencesActions.updateOfflineAccess('league', newLeague))
+        yield put (userPreferencesActions.updateOfflineAccess('standings', newStandings))
+
       } else {
         yield put (standingsActions.populateStandingsSuccess({league: leagues, standings }))
+        yield put (userPreferencesActions.updateOfflineAccess('league', leagues))
+        yield put (userPreferencesActions.updateOfflineAccess('standings', standings))
       }
       
       navigate('Standing');
