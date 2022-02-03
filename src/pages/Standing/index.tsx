@@ -1,23 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
 import { LeagueHeaderComponent } from './components';
 import {standingsTypedSelector} from '~/store/modules/standings/reducer';
-import { League } from '~/store/modules/standings/types'
 
-import { Container, FlatList, StandingContainer, ListItemContainer, ListHeaderContainer, 
-  StandingColumnText, PositionContainer, TeamContainer, StatisticsContainer, StatisticsColumn, 
-  TeamImage, OrderButtom, OrderButtomText, StandingColumnButtom} from './styles';
+import {
+  Container,
+  FlatList,
+  StandingContainer,
+  ListItemContainer,
+  ListHeaderContainer,
+  StandingColumnText,
+  PositionContainer,
+  TeamContainer,
+  StatisticsContainer,
+  StatisticsColumn,
+  TeamImage,
+  OrderButtom,
+  OrderButtomText,
+  StandingColumnButtom
+} from './styles';
 
+import { Standing } from '~/store/modules/standings/types';
+import { useDispatch } from 'react-redux';
+import { teamsActions } from '~/store/modules';
 interface RenderItemProps {
-  item: any;
+  item: Standing;
   index: number;
 }
 
-const Standing: React.FC = () => {
-  const {loading: standingLoading, standings, league } = standingsTypedSelector(state => state.standings);
+const StandingPage: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const {standings, league } = standingsTypedSelector(state => state.standings);
   const [filter, setFilter] = useState<string>('all');
   const [orderBy, setOrderBy] = useState<string>('points');
   const [list, setList] = useState<any>(standings);
+
   useEffect(() => {
     let tempStandings = [...standings];
     if(orderBy === 'points'){
@@ -36,8 +53,12 @@ const Standing: React.FC = () => {
     setOrderBy('points')
   }, [filter]);
 
+  const onSelectTeam = ({team}: Standing) => {
+    dispatch(teamsActions.teamsRequest({id: team.id}))
+  }
+
   const renderItem = ({item, index}: RenderItemProps) => (
-    <ListItemContainer>
+    <ListItemContainer onPress={() => onSelectTeam(item)}>
       <PositionContainer>
         <StandingColumnText>{item.rank}</StandingColumnText>
       </PositionContainer>
@@ -62,9 +83,7 @@ const Standing: React.FC = () => {
         <StandingColumnText>{item.points}</StandingColumnText>
       </StatisticsColumn>
       </StatisticsContainer>
-      
     </ListItemContainer>
-    
   )
   const Header:React.FC = () => {
     return (
@@ -142,4 +161,4 @@ const Standing: React.FC = () => {
   );
 }
 
-export default Standing;
+export default StandingPage;
