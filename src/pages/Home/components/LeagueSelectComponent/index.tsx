@@ -19,7 +19,11 @@ const LeagueSelectComponent: React.FC<CountrySelectProps> = ({leagues, onPress})
     }, [])
 
     const searchLeague = (value: string) => {
-        let newSearchObj = leagues?.filter((e: any) => e.league.name.includes(value));
+        let newSearchObj = leagues?.filter((e: any) => {
+            let leagueName = e.league.name.replace(/[^\w ]/g, '').toLocaleLowerCase();
+            let searchstring = value.replace(/[^\w ]/g, '').toLocaleLowerCase();
+            return leagueName.includes(searchstring);
+        });
         setSearchObj(newSearchObj);
     }
 
@@ -29,6 +33,7 @@ const LeagueSelectComponent: React.FC<CountrySelectProps> = ({leagues, onPress})
             data={searchObj}
             renderItem={({item, index}) => <CardItemComponent item={item} key={String(index)} onPress={onPress} />}
             numColumns={2}
+            keyboardShouldPersistTaps="always"
             ListHeaderComponent={<SearchInputComponent onChangeText={searchLeague} placeholder='Buscar liga' />}
             stickyHeaderIndices={[0]}
             ListFooterComponent={() => (

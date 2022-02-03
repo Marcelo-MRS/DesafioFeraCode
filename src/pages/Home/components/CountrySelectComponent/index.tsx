@@ -24,7 +24,11 @@ const CountrySelectComponent: React.FC<CountrySelectProps> = ({countries, onPres
     }, [])
 
     const searchCountry = (value: string) => {
-        let newSearchObj = countries?.filter(e => e.name.includes(value));
+        let newSearchObj = countries?.filter(e => {
+            let countryName = e.name.replace(/[^\w ]/g, '').toLocaleLowerCase();
+            let searchstring = value.replace(/[^\w ]/g, '').toLocaleLowerCase();
+            return countryName.includes(searchstring);
+        });
         setSearchObj(newSearchObj);
     }
 
@@ -39,6 +43,7 @@ const CountrySelectComponent: React.FC<CountrySelectProps> = ({countries, onPres
                 renderItem={({item, index}) => renderItem({item, index})}
                 extraData={searchObj}
                 stickyHeaderIndices={[0]}
+                keyboardShouldPersistTaps="always"
                 ListHeaderComponent={<SearchInputComponent onChangeText={searchCountry} placeholder='Buscar país' />}
                 ListFooterComponent={() => (
                     <>

@@ -31,6 +31,7 @@ const Routes: React.FC = () => {
         options={({navigation}) => ({
           headerTransparent: true,
           title: '',
+          headerShadowVisible: false,
           headerLeft: () => <HeaderButtonComponent navigation={navigation} />
         })}
       />
@@ -40,6 +41,7 @@ const Routes: React.FC = () => {
         options={({navigation}) => ({
           headerTransparent: true,
           title: '',
+          headerShadowVisible: false,
           headerLeft: () => <HeaderButtonComponent navigation={navigation} />
         })}
       />
