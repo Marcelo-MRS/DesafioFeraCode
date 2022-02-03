@@ -17,7 +17,7 @@ export enum StandingsTypes {
 
 
  export interface Team {
-  id: Number;
+  id: number;
   name: string;
   logo: string;
 }

@@ -12,6 +12,7 @@ export const standingsTypedSelector: TypedUseSelectorHook<RootState> = useSelect
 const INITIAL_STATE: StandingsState ={
   standings: [],
   loading: false,
+  league: undefined,
 };
 
 export default function standings(state = INITIAL_STATE, action: any) {

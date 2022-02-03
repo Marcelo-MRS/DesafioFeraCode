@@ -1,26 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import React from 'react';
+import { FlatList } from 'react-native';
 import { LeagueHeaderComponent } from './components';
 import {standingsTypedSelector} from '~/store/modules/standings/reducer';
-import { League } from '~/store/modules/standings/types'
 
-import { Container, StandingContainer, ListItemContainer, ListHeaderContainer, StandingColumnText, PositionContainer, TeamContainer, StatisticsContainer, StatisticsColumn, TeamImage} from './styles';
-
+import { Standing } from '~/store/modules/standings/types';
+import {
+  Container,
+  StandingContainer,
+  ListItemContainer,
+  ListHeaderContainer,
+  StandingColumnText,
+  PositionContainer,
+  TeamContainer,
+  StatisticsContainer,
+  StatisticsColumn,
+  TeamImage
+} from './styles';
+import { useDispatch } from 'react-redux';
+import { teamsActions } from '~/store/modules';
 interface RenderItemProps {
-  item: any;
+  item: Standing;
   index: number;
 }
 
-const Standing: React.FC = () => {
-  const {loading: standingLoading, standings, league } = standingsTypedSelector(state => state.standings);
+const StandingPage: React.FC = () => {
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    // setLeagues(standings[].league)
-    // setListStanding(standings[].league.standings)
-  }, []);
+  const {standings, league } = standingsTypedSelector(state => state.standings);
+
+  const onSelectTeam = ({team}: Standing) => {
+    dispatch(teamsActions.teamsRequest({id: team.id}))
+  }
 
   const renderItem = ({item, index}: RenderItemProps) => (
-    <ListItemContainer>
+    <ListItemContainer onPress={() => onSelectTeam(item)}>
       <PositionContainer>
         <StandingColumnText>{item.rank}</StandingColumnText>
       </PositionContainer>
@@ -45,9 +58,7 @@ const Standing: React.FC = () => {
         <StandingColumnText>{item.points}</StandingColumnText>
       </StatisticsColumn>
       </StatisticsContainer>
-      
     </ListItemContainer>
-    
   )
   const Header:React.FC = () => {
     return (
@@ -99,4 +110,4 @@ const Standing: React.FC = () => {
   );
 }
 
-export default Standing;
+export default StandingPage;

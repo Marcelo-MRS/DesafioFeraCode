@@ -14,7 +14,7 @@ export enum TeamsTypes {
  */
 
  export interface Team {
-  id: Number;
+  id: number;
   name: string;
   country: string;
   founded: string;
