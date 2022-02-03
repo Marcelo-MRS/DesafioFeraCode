@@ -5,7 +5,11 @@ interface StadiumImageProps {
     size: number;
 }
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.ScrollView.attrs(() => ({
+    contentContainerStyle: {
+        paddingBottom: 60
+    }
+}))`
     flex: 1;
     background-color: #fff;
 `;
@@ -35,11 +39,7 @@ export const TeamDetail = styled.Text`
     margin-bottom: 5px;
 `;
 
-export const DetailContainer = styled.ScrollView.attrs(() => ({
-    contentContainerStyle: {
-        paddingBottom: 60
-    }
-}))`
+export const DetailContainer = styled.View`
     padding: 0px 20px;
 `;
 

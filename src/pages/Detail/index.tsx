@@ -40,7 +40,9 @@ const Detail: React.FC = () => {
           <HeaderContainer>
             <TeamImage source={{uri: teamInfo?.team.logo}} resizeMode='contain' />
             <TeamName>{teamInfo?.team.name}</TeamName>
-            <TeamDetail>{teamInfo?.team.country} {`${teamInfo?.team.founded ? `- Fundado em ${teamInfo?.team.founded}` : ''}`}</TeamDetail>
+            <TeamDetail>
+              {teamInfo?.team.country} {`${teamInfo?.team.founded ? `- Fundado em ${teamInfo?.team.founded}` : ''}`}
+            </TeamDetail>
           </HeaderContainer>
           <DetailContainer onLayout={getCardSize}
           >
